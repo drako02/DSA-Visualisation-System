@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<fx:root prefHeight="380.0" prefWidth="469.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.loginform.AdminLoginController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="233.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="74.0" layoutY="14.0" text="LOGIN" />
+            <TextField fx:id="usernameField" layoutX="26.0" layoutY="53.0" promptText="Username" />
+            <TextField fx:id="passwordField" layoutX="26.0" layoutY="102.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
+            <Button fx:id="loginButton" layoutX="26.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="25.0" prefWidth="149.0" text="LOGIN" />
+         </children>
+      </AnchorPane>
+   </center>
+</fx:root>
