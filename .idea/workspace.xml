@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4040f6d-dcc7-4d3e-9d79-179d1adccfbd" name="Changes" comment="" />
+    <list default="true" id="a4040f6d-dcc7-4d3e-9d79-179d1adccfbd" name="Changes" comment="j">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/login/loginform/AdminLogin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/login/loginform/AdminLogin-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/login/loginform/AdminLogin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/login/loginform/AdminLogin-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/login/loginform/AdminLoginApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/login/loginform/AdminLoginApplication.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,8 +29,16 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2a7sA8ORLHvsASCxIPo6Lhw4y31" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -39,8 +52,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/andre/IdeaProjects/loginform",
-    "project.structure.last.edited": "Modules",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/andre/IdeaProjects/loginform/lib/mysql-connector-j-8.0.32.jar",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.ignored.files"
@@ -65,6 +79,15 @@
       <option name="presentableId" value="Default" />
       <updated>1703680841823</updated>
     </task>
+    <task id="LOCAL-00001" summary="j">
+      <option name="closed" value="true" />
+      <created>1707851687443</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707851687443</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,11 +95,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="j" />
+    <option name="LAST_COMMIT_MESSAGE" value="j" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

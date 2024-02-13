@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<fx:root prefHeight="380.0" prefWidth="469.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.loginform.AdminLoginController">
+<BorderPane prefHeight="317.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.loginform.AdminLoginController">
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="233.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="233.0" prefWidth="200.0">
          <children>
             <Label layoutX="74.0" layoutY="14.0" text="LOGIN" />
             <TextField fx:id="usernameField" layoutX="26.0" layoutY="53.0" promptText="Username" />
@@ -17,4 +17,4 @@
          </children>
       </AnchorPane>
    </center>
-</fx:root>
+</BorderPane>
