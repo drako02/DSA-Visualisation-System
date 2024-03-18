@@ -1,0 +1,26 @@
+.anchorPane_1{
+}
+.vBox_1{
+    -fx-background-color: #0c3439;
+}
+
+.anchorPane_2{
+    -fx-background-color: #368088;
+}
+
+.searchButton{
+    -fx-background-color: transparent;
+}
+
+.searchField{
+    -fx-background-color: #368088 ;
+    -fx-border-color: #215055;
+    -fx-border-radius: 5px;
+}
+
+.hBox1 .button{
+    -fx-background-color: #0c3439;
+}
+
+
+

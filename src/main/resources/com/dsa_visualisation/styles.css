@@ -1,0 +1,14 @@
+.transparent{
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.button:hover{
+    -fx-background-color: rgba(155, 142, 111, 0.3);
+}
+
+.button:focused{
+    -fx-background-color: #9b8e6f;
+}
+
+.
+
