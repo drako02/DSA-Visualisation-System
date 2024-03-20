@@ -36,4 +36,29 @@ public class HomepageController {
         stage.setScene(scene);
     }
 
+    @FXML
+    private void onAlgorithmsButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("Algorithms.fxml"));
+        borderPane.setCenter(fxmlLoader.load());
+    }
+
+    @FXML
+    private void onNotesButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("Notes.fxml"));
+        borderPane.setCenter(fxmlLoader.load());
+    }
+
+    @FXML
+    private void onChataiButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("ChatAI.fxml"));
+        borderPane.setCenter(fxmlLoader.load());
+    }
+
+    @FXML
+    private void onAboutButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("About.fxml"));
+        borderPane.setCenter(fxmlLoader.load());
+    }
+
+
 }

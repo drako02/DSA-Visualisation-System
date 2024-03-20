@@ -8,7 +8,15 @@
 
 .button:focused{
     -fx-background-color: #9b8e6f;
+    -fx-font-size: 14px;
+    -fx-font-weight: bolder;
 }
 
-.
+.vbox:hover{
+    -fx-cursor: hand;
+}
+
+.vbox:focused{
+    -fx-background-color: rgba(155, 142, 111, 0.3);
+}
 
