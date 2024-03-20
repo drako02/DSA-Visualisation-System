@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;">
+               <children>
+                  <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FontIcon>
+                  <Label text="Sort">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.columnIndex="1">
+               <children>
+                  <FontIcon iconLiteral="fas-search" iconSize="80">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </FontIcon>
+                  <Label text="Search">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.rowIndex="1">
+               <children>
+                  <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
+                  <Label text="Sort">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
+                  <Label text="Sort">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.rowIndex="2">
+               <children>
+                  <FontIcon iconLiteral="fas-walking" iconSize="80" />
+                  <Label text="Breadth first search">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <FontIcon iconLiteral="fas-mountain" iconSize="80" />
+                  <Label text="Depth first search">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.columnIndex="2">
+               <children>
+                  <FontIcon iconLiteral="fas-search" iconSize="80" />
+                  <Label text="Search">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7 #e8d5a7;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <FontIcon iconLiteral="fas-search" iconSize="80" />
+                  <Label text="Search">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </GridPane>
+   </children>
+</VBox>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.HomepageController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: #e8d5a7;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="160.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <FontIcon iconColor="#1b1813" iconLiteral="ion4-ios-menu" iconSize="27">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="160.0" />
+            <Button fx:id="homeButton" alignment="TOP_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="Home">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="ion4-md-home" iconSize="20" selectionEnd="0" />
+               </graphic>
+            </Button>
+            <Button fx:id="datastructuresButton" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDatastructuresButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="Data Structures">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="fas-database" iconSize="16" />
+               </graphic>
+            </Button>
+            <Button fx:id="algorithmsButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="77.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAlgorithmsButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="Algorithms">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="fas-code-branch" iconSize="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="notesButton" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNotesButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="Notes">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="bi-file-text-fill" iconSize="16" strokeType="OUTSIDE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </FontIcon>
+               </graphic>
+            </Button>
+            <Button fx:id="chataiButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="147.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChataiButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="ChatAI">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="ion4-ios-chatbubbles" iconSize="19" selectionEnd="0" />
+               </graphic>
+            </Button>
+            <Button fx:id="aboutButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="182.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAboutButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" styleClass="transparent" stylesheets="@styles.css" text="About">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Segoe UI Semilight" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconLiteral="bi-info-circle-fill" iconSize="15" />
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox fx:id="VBox1" prefHeight="600.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="720.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="211.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="181.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 0.7;">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <TextField promptText="Search" style="-fx-border-width: 0; -fx-background-color: white;">
+                                 <HBox.margin>
+                                    <Insets left="3.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <FontIcon iconColor="#1b1813" iconLiteral="bi-search" iconSize="14" text="" wrappingWidth="17.0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </FontIcon>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="34.0" prefWidth="720.0">
+               <children>
+                  <Label prefHeight="40.0" text="Home">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="200.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="280.0" prefWidth="302.0" spacing="20.0" style="-fx-background-color: ffa500; -fx-background-radius: 12;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <children>
+                        <FontIcon iconLiteral="fas-database" iconSize="81" />
+                        <Label text="Data Structures">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="280.0" prefWidth="302.0" spacing="20.0" style="-fx-background-color: ffa500; -fx-background-radius: 12;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <children>
+                        <FontIcon iconLiteral="fas-code-branch" iconSize="83" />
+                        <Label text="Algorithms">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="720.0">
+               <children>
+                  <Label text="Featured">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="178.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="202.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Stacks">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Linked lists">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="111.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Queue">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="202.0" prefWidth="300.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Breadth first search">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Bubble sort">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="111.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e8d5a7; -fx-background-radius: 10;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Arrays">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="123.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
