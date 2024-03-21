@@ -2,21 +2,31 @@
     -fx-background-color: rgba(0, 0, 0, 0);
 }
 
-.button:hover{
+.button1:hover{
     -fx-background-color: rgba(155, 142, 111, 0.3);
+    -fx-cursor: hand;
 }
 
-.button:focused{
+.button1:focused{
     -fx-background-color: #9b8e6f;
     -fx-font-size: 14px;
     -fx-font-weight: bolder;
 }
 
-.vbox:hover{
-    -fx-cursor: hand;
+.button2{
+    -fx-background-color:  #e8d5a7;
 }
 
-.vbox:focused{
-    -fx-background-color: rgba(155, 142, 111, 0.3);
+.button2:hover{
+    -fx-background-color: rgba(155, 142, 111, 0.85);
+    -fx-cursor: hand;
+    -fx-font-size: 18px;
+    -fx-font-weight: bolder;
+}
+
+.button2:focused{
+    -fx-background-color: #675f4a;
+    -fx-text-fill: antiquewhite;
+
 }
 

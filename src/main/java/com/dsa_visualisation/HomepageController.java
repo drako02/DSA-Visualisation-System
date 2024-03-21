@@ -59,6 +59,5 @@ public class HomepageController {
         FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("About.fxml"));
         borderPane.setCenter(fxmlLoader.load());
     }
-
-
 }
+
