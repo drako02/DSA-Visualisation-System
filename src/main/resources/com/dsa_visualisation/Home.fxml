@@ -11,24 +11,24 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.HomepageController">
+<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.HomepageController">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: #e8d5a7;" BorderPane.alignment="CENTER">
+      <VBox fx:id="sidePanel" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: #e8d5a7;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="39.0" prefWidth="160.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <FontIcon iconColor="#1b1813" iconLiteral="ion4-ios-menu" iconSize="27">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </FontIcon>
+                  <Button mnemonicParsing="false" onAction="#resizeSidePanel" styleClass="transparent">
+                     <graphic>
+                        <FontIcon iconColor="#1b1813" iconLiteral="ion4-ios-menu" iconSize="27" />
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="55.0" prefWidth="160.0" />
-            <Button fx:id="homeButton" alignment="TOP_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Home">
+            <Button fx:id="sideButton1" alignment="TOP_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Home">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -46,7 +46,7 @@
                   <String fx:value="button1" />
                </styleClass>
             </Button>
-            <Button fx:id="datastructuresButton" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDatastructuresButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Data Structures">
+            <Button fx:id="sideButton2" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onDatastructuresButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Data Structures">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -64,7 +64,7 @@
                   <String fx:value="button1" />
                </styleClass>
             </Button>
-            <Button fx:id="algorithmsButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="77.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAlgorithmsButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Algorithms">
+            <Button fx:id="sideButton3" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="77.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAlgorithmsButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Algorithms">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -82,7 +82,7 @@
                   <String fx:value="button1" />
                </styleClass>
             </Button>
-            <Button fx:id="notesButton" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNotesButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Notes">
+            <Button fx:id="sideButton4" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNotesButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="Notes">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -104,7 +104,7 @@
                   <String fx:value="button1" />
                </styleClass>
             </Button>
-            <Button fx:id="chataiButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="147.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChataiButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="ChatAI">
+            <Button fx:id="sideButton5" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="147.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onChataiButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="ChatAI">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -122,7 +122,7 @@
                   <String fx:value="button1" />
                </styleClass>
             </Button>
-            <Button fx:id="aboutButton" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="182.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAboutButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="About">
+            <Button fx:id="sideButton6" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="182.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAboutButtonClick" prefHeight="35.0" prefWidth="160.0" style="-fx-background-radius: 4px;" stylesheets="@styles.css" text="About">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

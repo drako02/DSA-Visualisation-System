@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -58,6 +61,56 @@ public class HomepageController {
     private void onAboutButtonClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("About.fxml"));
         borderPane.setCenter(fxmlLoader.load());
+    }
+
+    @FXML
+    private VBox sidePanel;
+
+    @FXML
+    private Button sideButton1;
+    @FXML
+    private Button sideButton2;
+    @FXML
+    private Button sideButton3;
+    @FXML
+    private Button sideButton4;
+    @FXML
+    private Button sideButton5;
+    @FXML
+    private Button sideButton6;
+
+
+    private double defaultWidth;
+
+    @FXML
+    private void initialize(){
+        defaultWidth = sidePanel.getPrefWidth();
+    }
+
+    @FXML
+    private void resizeSidePanel(ActionEvent event) {
+
+        if(sidePanel.getPrefWidth() == defaultWidth){
+            sidePanel.setPrefWidth(45);
+            sideButton1.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            sideButton2.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            sideButton3.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            sideButton4.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            sideButton5.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            sideButton6.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+
+
+        } else {
+            sidePanel.setPrefWidth(defaultWidth);
+            sideButton1.setContentDisplay(ContentDisplay.LEFT);
+            sideButton2.setContentDisplay(ContentDisplay.LEFT);
+            sideButton3.setContentDisplay(ContentDisplay.LEFT);
+            sideButton4.setContentDisplay(ContentDisplay.LEFT);
+            sideButton5.setContentDisplay(ContentDisplay.LEFT);
+            sideButton6.setContentDisplay(ContentDisplay.LEFT);
+
+
+        }
     }
 }
 
