@@ -57,7 +57,7 @@
                   <Font name="Segoe UI Semilight" size="14.0" />
                </font>
                <graphic>
-                  <FontIcon iconLiteral="fas-database" iconSize="16" />
+                  <FontIcon iconLiteral="fas-database" iconSize="20" />
                </graphic>
                <styleClass>
                   <String fx:value="transparent" />
@@ -75,7 +75,7 @@
                   <Font name="Segoe UI Semilight" size="14.0" />
                </font>
                <graphic>
-                  <FontIcon iconLiteral="fas-code-branch" iconSize="18" />
+                  <FontIcon iconLiteral="fas-code-branch" iconSize="20" />
                </graphic>
                <styleClass>
                   <String fx:value="transparent" />
@@ -93,7 +93,7 @@
                   <Font name="Segoe UI Semilight" size="14.0" />
                </font>
                <graphic>
-                  <FontIcon iconLiteral="bi-file-text-fill" iconSize="16" strokeType="OUTSIDE">
+                  <FontIcon iconLiteral="bi-file-text-fill" iconSize="20" strokeType="OUTSIDE">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -115,7 +115,7 @@
                   <Font name="Segoe UI Semilight" size="14.0" />
                </font>
                <graphic>
-                  <FontIcon iconLiteral="ion4-ios-chatbubbles" iconSize="19" selectionEnd="0" />
+                  <FontIcon iconLiteral="ion4-ios-chatbubbles" iconSize="20" selectionEnd="0" />
                </graphic>
                <styleClass>
                   <String fx:value="transparent" />
@@ -133,7 +133,7 @@
                   <Font name="Segoe UI Semilight" size="14.0" />
                </font>
                <graphic>
-                  <FontIcon iconLiteral="bi-info-circle-fill" iconSize="15" />
+                  <FontIcon iconLiteral="bi-info-circle-fill" iconSize="20" />
                </graphic>
                <styleClass>
                   <String fx:value="transparent" />

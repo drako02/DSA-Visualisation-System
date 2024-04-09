@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -25,7 +26,7 @@ public class HomepageController {
 
     @FXML
     private void onDatastructuresButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("DataStructures.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
         borderPane.setCenter(fxmlLoader.load());
 
     }
@@ -34,32 +35,41 @@ public class HomepageController {
     private void onHomeButtonClick(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         Stage stage =(Stage) source.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("Home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+
+
     }
 
     @FXML
     private void onAlgorithmsButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("Algorithms.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
+        Parent root = fxmlLoader.load();
+        borderPane.setCenter(root);
+
+        AlgorithmsController algorithmsController = fxmlLoader.getController();
+        algorithmsController.setBorderPane(borderPane);
+
+
+
     }
 
     @FXML
     private void onNotesButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("Notes.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
         borderPane.setCenter(fxmlLoader.load());
     }
 
     @FXML
     private void onChataiButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("ChatAI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ChatAI.fxml"));
         borderPane.setCenter(fxmlLoader.load());
     }
 
     @FXML
     private void onAboutButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageApplication.class.getResource("About.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("About.fxml"));
         borderPane.setCenter(fxmlLoader.load());
     }
 
@@ -111,6 +121,12 @@ public class HomepageController {
 
 
         }
+    }
+    @FXML
+    private Button bubbleSort;
+    private void onBubbleSortClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
+        borderPane.setCenter(fxmlLoader.load());
     }
 }
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.AlgorithmsController">
    <children>
       <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -70,12 +70,12 @@
                   </VBox>
                </graphic>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="1">
+            <Button fx:id="bubbleSort" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onBubbleSortClick" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="1">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
-                        <Label text="Sort">
+                        <Label text="Bubble Sort">
                            <font>
                               <Font name="Segoe UI Semibold" size="20.0" />
                            </font>
