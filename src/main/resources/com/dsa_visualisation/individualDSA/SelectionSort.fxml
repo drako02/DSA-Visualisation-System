@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.SelectionSortController">
+    <children>
+        <VBox VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="900.0">
+                    <children>
+                        <Label text="DATA STRUCTURE/ALGORITHM">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="27.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="550.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="561.0" prefWidth="620.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox fx:id="hbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="561.0" prefWidth="314.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <VBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
+        </VBox>
+    </children>
+</VBox>
