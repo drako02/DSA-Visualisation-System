@@ -23,37 +23,59 @@ public class HomepageController {
     @FXML
     private BorderPane borderPane;
 
+    private Scene homeScene;
+
+
+    private boolean dataStructuresLoaded = false; // Flag to track if DataStructures.fxml is loaded
+    private Parent dataStructuresRoot; // Reference to the loaded DataStructures.fxml root
 
     @FXML
     private void onDatastructuresButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        if (!dataStructuresLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresLoaded = true;
+        }
 
+        // Set the root of DataStructures.fxml to the center of the BorderPane
+        borderPane.setCenter(dataStructuresRoot);
     }
+
 
     @FXML
     private void onHomeButtonClick(ActionEvent event) throws IOException {
+        // If homeScene is null, load the Home.fxml and create the scene
+        if (homeScene == null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Home.fxml"));
+            homeScene = new Scene(fxmlLoader.load());
+        }
+
+        // Get the source node that triggered the event
         Node source = (Node) event.getSource();
-        Stage stage =(Stage) source.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Home.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-
-
+        // Get the stage from the source node
+        Stage stage = (Stage) source.getScene().getWindow();
+        // Set the scene to the stage
+        stage.setScene(homeScene);
     }
 
     @FXML
+    private boolean algorithmsLoaded = false; // Flag to track if DataStructures.fxml is loaded
+    private Parent algorithmsRoot; // Reference to the loaded DataStructures.fxml root
+
+    @FXML
     private void onAlgorithmsButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
-        Parent root = fxmlLoader.load();
-        borderPane.setCenter(root);
+        if (!algorithmsLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
+            algorithmsRoot = fxmlLoader.load();
+            algorithmsLoaded = true;
+        }
 
-        AlgorithmsController algorithmsController = fxmlLoader.getController();
-        algorithmsController.setBorderPane(borderPane);
-
-
-
+        // Set the root of DataStructures.fxml to the center of the BorderPane
+        borderPane.setCenter(algorithmsRoot);
     }
+
 
     @FXML
     private void onNotesButtonClick(ActionEvent event) throws IOException {
