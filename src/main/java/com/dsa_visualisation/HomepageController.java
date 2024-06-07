@@ -36,6 +36,9 @@ public class HomepageController {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
             dataStructuresRoot = fxmlLoader.load();
             dataStructuresLoaded = true;
+
+            DataStructuresController dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane);
         }
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
@@ -70,7 +73,11 @@ public class HomepageController {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
             algorithmsRoot = fxmlLoader.load();
             algorithmsLoaded = true;
+
+            AlgorithmsController algorithmsController = fxmlLoader.getController();
+            algorithmsController.setBorderPane(borderPane);
         }
+
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
         borderPane.setCenter(algorithmsRoot);
