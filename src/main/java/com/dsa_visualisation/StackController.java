@@ -38,6 +38,7 @@ public class StackController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VBox stackVBox = new VBox();
@@ -123,7 +124,7 @@ public class StackController implements Initializable {
 
                     // Animation to move the stackPane from the bottom to the correct position
                     TranslateTransition transition = new TranslateTransition(Duration.millis(500), stackPane);
-                    transition.setFromY(stackVBox.getHeight());
+                    transition.setFromY(-(stackVBox.getBoundsInParent().getMaxY()-100));
                     transition.setToY(0);
                     transition.play();
                 });
@@ -140,7 +141,7 @@ public class StackController implements Initializable {
                     StackPane topElement = stackElements.remove(stackElements.size() - 1);
                     Platform.runLater(() -> {
                         TranslateTransition transition = new TranslateTransition(Duration.millis(500), topElement);
-                        transition.setByY(stackVBox.getHeight());
+                        transition.setByY(-stackVBox.getHeight());
                         transition.setOnFinished(event -> stackVBox.getChildren().remove(topElement));
                         transition.play();
                     });
