@@ -117,6 +117,8 @@ public class LinearSearchController implements Initializable {
                 // Update iterator bar height to target value
                 Platform.runLater(() -> iterator.setYValue(target));
 
+                Thread.sleep(1000);
+
                 for (int i = 1; i < data.size(); i++) {
                     Data<String, Number> current = data.get(i);
 
@@ -130,9 +132,12 @@ public class LinearSearchController implements Initializable {
                         move.play();
                     });
 
-                    Thread.sleep(500); // Wait for the animation to complete
+                    Thread.sleep(750); // Wait for the animation to complete
 
                     if (current.getYValue().doubleValue() == target) {
+                        Thread.sleep(500);
+                        Platform.runLater(() -> iterator.getNode().setStyle("-fx-border-color: green; -fx-border-width: 4px; -fx-background-color: transparent;"));
+                        Thread.sleep(500);
                         Platform.runLater(() -> current.getNode().setStyle("-fx-background-color: blue;"));
                         break;
                     }
