@@ -15,7 +15,13 @@ public class DataStructuresController {
     }
 
     public void onStackButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Stack.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/Stack.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+    }
+
+    public void onQueueButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/Queue.fxml"));
         Parent parent = fxmlLoader.load();
         borderPane.setCenter(parent);
     }

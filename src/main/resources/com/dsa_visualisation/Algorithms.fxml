@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.AlgorithmsController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.AlgorithmsController">
    <children>
       <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -20,16 +20,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onBSTClick" styleClass="button2" stylesheets="@styles.css">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <FontIcon iconLiteral="fas-search" iconSize="80">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                        </FontIcon>
-                        <Label text="Search">
+                        <FontIcon iconLiteral="fas-search" iconSize="80" />
+
+                        <Label text="Binary Search Tree">
                            <font>
                               <Font name="Segoe UI Semibold" size="20.0" />
                            </font>
@@ -38,12 +35,12 @@
                   </VBox>
                </graphic>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onBinarySearchClick" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <FontIcon iconLiteral="fas-search" iconSize="80" />
-                        <Label text="Search">
+                        <Label text="Binary Search">
                            <font>
                               <Font name="Segoe UI Semibold" size="20.0" />
                            </font>
@@ -52,12 +49,12 @@
                   </VBox>
                </graphic>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinearSearchClick" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <FontIcon iconLiteral="fas-search" iconSize="80" />
-                        <Label text="Search">
+                        <Label text="Linear Search">
                            <font>
                               <Font name="Segoe UI Semibold" size="20.0" />
                            </font>

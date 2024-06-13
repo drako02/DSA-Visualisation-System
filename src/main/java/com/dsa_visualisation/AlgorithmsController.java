@@ -31,4 +31,25 @@ public class AlgorithmsController {
 
     }
 
+    public void onBSTClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BST.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+
+    }
+
+    public void onBinarySearchClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BinarySearch.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+
+    }
+
+    public void onLinearSearchClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/LinearSearch.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+
+    }
+
 }
