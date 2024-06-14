@@ -143,7 +143,11 @@ public class LinearSearchController implements Initializable {
                     }
                 }
 
-                Platform.runLater(() -> series.getData().remove(iterator)); // Remove the iterator bar at the end
+                Platform.runLater(() -> {
+                    iterator.setXValue("-1");
+                    iterator.setYValue(0);
+                    iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+                });
                 return null;
             }
         };
