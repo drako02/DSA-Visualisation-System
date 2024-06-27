@@ -30,3 +30,34 @@
 
 }
 
+.toggle-button{
+    -fx-background-color: #e8d5a7;
+}
+.toggle-button:hover{
+    -fx-background-color: #9b8e6f;
+    -fx-cursor: hand;
+}
+.toggle-button:focused{
+    -fx-background-color: #675f4a;
+    -fx-text-fill: antiquewhite;
+}
+
+.button{
+    -fx-background-color: #e8d5a7;
+}
+
+.button:hover{
+    -fx-background-color: #9b8e6f;
+    -fx-cursor: hand;
+}
+
+.text-field{
+    -fx-border-style: solid;
+    -fx-border-width: 0.5px;
+    -fx-border-color: #9b8e6f;
+    -fx-border-radius: 5px;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #9b8e6f;  /* Color for the first series */
+}

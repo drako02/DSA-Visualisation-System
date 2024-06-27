@@ -3,12 +3,12 @@ package com.dsa_visualisation;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -38,9 +38,26 @@ public class StackController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+    @FXML
+    private ToggleButton javaButton;
+
+    @FXML
+    private ToggleButton cppButton;
+
+    @FXML
+    private ToggleButton jsButton;
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    private CodeLoader codeLoader;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        codeLoader = new CodeLoader("src/main/resources/com/dsa_visualisation/Codes/Stack.json");
+
         VBox stackVBox = new VBox();
         stackVBox.setAlignment(Pos.BOTTOM_CENTER);
         stackVBox.setPadding(new Insets(10));
@@ -102,6 +119,32 @@ public class StackController implements Initializable {
 
         borderPane.setCenter(stackVBox);
         borderPane.setBottom(hbox);
+
+//        javaButton.setOnAction(this::onToggleButtonClick);
+//        cppButton.setOnAction(this::onToggleButtonClick);
+//        jsButton.setOnAction(this::onToggleButtonClick);
+    }
+
+    @FXML
+    private void onToggleButtonClick(ActionEvent event){
+        ToggleButton sourceButton = (ToggleButton) event.getSource();
+        String code = "";
+        if(sourceButton == javaButton) {
+            code = codeLoader.getCode("java");
+        } else if(sourceButton == cppButton) {
+            code = codeLoader.getCode("cpp");
+        } else if(sourceButton == jsButton) {
+            code = codeLoader.getCode("javascript");
+        }
+
+        TextArea textArea = new TextArea(code);
+        textArea.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 14px;");
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        scrollPane.setContent(textArea);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
     }
 
     private Task<Void> createPushTask(int number, VBox stackVBox) {
@@ -177,4 +220,27 @@ public class StackController implements Initializable {
             }
         };
     }
+
+
+//    @FXML
+//    private void onJavaButtonCLick (ActionEvent event) {
+//        TextArea textArea = new TextArea("kfkfkfkfkfkkfkfkfkfffffffffffffffffffffffffffff\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n" +
+//                "kjfbjvkbkjbvkjvbjvbkablkavbv\n");
+//
+//        textArea.setStyle("-fx-font-family: 'Arial'; -fx-font-size: 18px;");
+//        textArea.setWrapText(true);
+//
+//        scrollPane.setContent(textArea);
+//        scrollPane.setFitToWidth(true);
+//        scrollPane.setFitToHeight(true);
+//    }
+
+
 }

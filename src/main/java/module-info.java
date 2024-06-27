@@ -3,6 +3,7 @@ module dsa_visualisation.dsa_visualisation {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
+    requires javafx.base;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -13,6 +14,11 @@ module dsa_visualisation.dsa_visualisation {
     requires org.kordamp.ikonli.ionicons4;
     requires org.kordamp.ikonli.bootstrapicons;
     requires com.almasb.fxgl.all;
+    requires com.gluonhq.charm.glisten;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+
+
 
     opens com.dsa_visualisation to javafx.fxml;
     exports com.dsa_visualisation;

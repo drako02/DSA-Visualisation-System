@@ -25,4 +25,16 @@ public class DataStructuresController {
         Parent parent = fxmlLoader.load();
         borderPane.setCenter(parent);
     }
+
+    public void onArrayButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/Array.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+    }
+
+    public void onLinkedListButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/LinkedList.fxml"));
+        Parent parent = fxmlLoader.load();
+        borderPane.setCenter(parent);
+    }
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.StackController">
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.ArrayController">
     <children>
         <VBox VBox.vgrow="ALWAYS">
             <children>
@@ -37,12 +37,12 @@
                             <children>
                                 <ToggleButtonGroup prefHeight="32.0" prefWidth="292.0">
                                     <toggles>
-                                        <ToggleButton fx:id="javaButton" onAction="#onToggleButtonClick" prefHeight="32.0" prefWidth="40.0" text="Java" />
-                                        <ToggleButton fx:id="cppButton" onAction="#onToggleButtonClick" prefHeight="32.0" prefWidth="40.0" text="C++" />
-                                        <ToggleButton fx:id="jsButton" onAction="#onToggleButtonClick" prefHeight="32.0" prefWidth="40.0" text="JS" />
+                                        <ToggleButton fx:id="javaButton" prefHeight="32.0" prefWidth="40.0" text="Java" />
+                                        <ToggleButton fx:id="cppButton" prefHeight="32.0" prefWidth="40.0" text="C++" />
+                                        <ToggleButton fx:id="jsButton" prefHeight="32.0" prefWidth="40.0" text="JS" />
                                     </toggles>
                                 </ToggleButtonGroup>
-                                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
                     </children>

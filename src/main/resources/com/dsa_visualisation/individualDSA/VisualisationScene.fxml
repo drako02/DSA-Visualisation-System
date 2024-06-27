@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.VisualisationSceneController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.VisualisationSceneController">
     <children>
         <VBox VBox.vgrow="ALWAYS">
             <children>
@@ -34,6 +39,13 @@
                         </VBox>
                         <VBox prefHeight="561.0" prefWidth="314.0" HBox.hgrow="ALWAYS">
                             <children>
+                        <ToggleButtonGroup prefHeight="32.0" prefWidth="292.0">
+                            <toggles>
+                                <ToggleButton fx:id="javaButton" prefHeight="32.0" prefWidth="40.0" text="Java" />
+                                <ToggleButton fx:id="cppButton" prefHeight="32.0" prefWidth="40.0" text="C++" />
+                                <ToggleButton fx:id="jsButton" prefHeight="32.0" prefWidth="40.0" text="JS" />
+                            </toggles>
+                        </ToggleButtonGroup>
                                 <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
