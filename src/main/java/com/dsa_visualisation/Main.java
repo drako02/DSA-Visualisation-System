@@ -8,17 +8,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    public Scene homeScene;
+
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Home.fxml" ));
-        Scene scene = new Scene(fxmlLoader.load());
+        homeScene = new Scene(fxmlLoader.load());
         stage.setTitle("DSA Visualisation");
         
-        stage.setScene(scene);
+        stage.setScene(homeScene);
         stage.show();
 
-
     }
+
+
 
     public static void main(String[] args) {
         launch();

@@ -17,6 +17,15 @@ module dsa_visualisation.dsa_visualisation {
     requires com.gluonhq.charm.glisten;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.annotation;
+    requires okhttp3;
+    requires retrofit2;
+    requires service;
+    requires api;
+//    requires retrofit2.converter.jackson;
+//    requires com.theokanning.openai_gpt3_java;
+//    requires com.theokanning.openai_gpt3_java.client;
+//    requires com.theokanning.openai_gpt3_java.api;
 
 
 

@@ -3,6 +3,7 @@ package com.dsa_visualisation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,8 +14,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HomepageController {
+public class HomepageController{
     @FXML
     private Stage stage;
     @FXML
@@ -23,11 +26,18 @@ public class HomepageController {
     @FXML
     private BorderPane borderPane;
 
-    private Scene homeScene;
+    private Node initialCenter;
 
 
     private boolean dataStructuresLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent dataStructuresRoot; // Reference to the loaded DataStructures.fxml root
+
+    private boolean chatAILoaded = false; // Flag to track if DataStructures.fxml is loaded
+    private Parent chatAIRoot;
+
+    private boolean homeLoaded = false; // Flag to track if DataStructures.fxml is loaded
+    private Parent homeRoot;
+
 
     @FXML
     private void onDatastructuresButtonClick(ActionEvent event) throws IOException {
@@ -46,21 +56,6 @@ public class HomepageController {
     }
 
 
-    @FXML
-    private void onHomeButtonClick(ActionEvent event) throws IOException {
-        // If homeScene is null, load the Home.fxml and create the scene
-        if (homeScene == null) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Home.fxml"));
-            homeScene = new Scene(fxmlLoader.load());
-        }
-
-        // Get the source node that triggered the event
-        Node source = (Node) event.getSource();
-        // Get the stage from the source node
-        Stage stage = (Stage) source.getScene().getWindow();
-        // Set the scene to the stage
-        stage.setScene(homeScene);
-    }
 
     @FXML
     private boolean algorithmsLoaded = false; // Flag to track if DataStructures.fxml is loaded
@@ -90,11 +85,23 @@ public class HomepageController {
         borderPane.setCenter(fxmlLoader.load());
     }
 
+
     @FXML
     private void onChataiButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ChatAI.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        if (!chatAILoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ChatAI.fxml"));
+            chatAIRoot = fxmlLoader.load();
+            chatAILoaded = true;
+
+//            DataStructuresController dataStructuresController = fxmlLoader.getController();
+//            dataStructuresController.setBorderPane1(borderPane);
+        }
+
+        // Set the root of DataStructures.fxml to the center of the BorderPane
+        borderPane.setCenter(chatAIRoot);
     }
+
 
     @FXML
     private void onAboutButtonClick(ActionEvent event) throws IOException {
@@ -124,6 +131,12 @@ public class HomepageController {
     @FXML
     private void initialize(){
         defaultWidth = sidePanel.getPrefWidth();
+        initialCenter = borderPane.getCenter(); // Save the initial center node
+    }
+
+    @FXML
+    private void onHomeButtonClick(ActionEvent event) {
+        borderPane.setCenter(initialCenter);
     }
 
     @FXML
@@ -157,5 +170,7 @@ public class HomepageController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
         borderPane.setCenter(fxmlLoader.load());
     }
+
+
 }
 
