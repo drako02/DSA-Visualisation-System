@@ -20,7 +20,7 @@
 .button2:hover{
     -fx-background-color: rgba(155, 142, 111, 0.85);
     -fx-cursor: hand;
-    -fx-font-size: 18px;
+    /*-fx-font-size: 18px;*/
     -fx-font-weight: bolder;
 }
 
@@ -28,6 +28,12 @@
     -fx-background-color: #675f4a;
     -fx-text-fill: antiquewhite;
 
+}
+.button2:focused .label {
+    -fx-text-fill: antiquewhite;
+}
+.button2:focused .ikonli-font-icon {
+    -fx-fill: antiquewhite;
 }
 
 .toggle-button{

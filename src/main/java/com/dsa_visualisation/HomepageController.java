@@ -35,8 +35,8 @@ public class HomepageController{
     private boolean chatAILoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent chatAIRoot;
 
-    private boolean homeLoaded = false; // Flag to track if DataStructures.fxml is loaded
-    private Parent homeRoot;
+    private boolean notesLoaded = false; // Flag to track if DataStructures.fxml is loaded
+    private Parent notesRoot;
 
 
     @FXML
@@ -81,9 +81,26 @@ public class HomepageController{
 
     @FXML
     private void onNotesButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        if (!notesLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
+            notesRoot = fxmlLoader.load();
+            notesLoaded = true;
+
+            NotesController notesController = fxmlLoader.getController();
+            notesController.setBorderPane2(borderPane);
+        }
+
+        // Set the root of DataStructures.fxml to the center of the BorderPane
+        borderPane.setCenter(notesRoot);
     }
+
+
+//    @FXML
+//    private void onNotesButtonClick(ActionEvent event) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
+//        borderPane.setCenter(fxmlLoader.load());
+//    }
 
 
     @FXML

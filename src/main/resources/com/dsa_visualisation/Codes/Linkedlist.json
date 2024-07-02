@@ -1,14 +1,6 @@
 {
-  "name": "codes",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/drako02/DSA-Visualisation-System.git"
-  },
-  "private": true
+  "java": " public class SinglyLinkedList {\n    private Node head;\n\n    private static class Node {\n        int data;\n        Node next;\n\n        Node(int data) {\n            this.data = data;\n            this.next = null;\n        }\n    }\n\n    public void insert(int data) {\n        Node newNode = new Node(data);\n        if (head == null) {\n            head = newNode;\n        } else {\n            Node temp = head;\n            while (temp.next != null) {\n                temp = temp.next;\n            }\n            temp.next = newNode;\n        }\n    }\n\n    public void display() {\n        Node temp = head;\n        while (temp != null) {\n            System.out.print(temp.data + \" \");\n            temp = temp.next;\n        }\n    }\n\n    public static void main(String[] args) {\n        SinglyLinkedList list = new SinglyLinkedList();\n        list.insert(1);\n        list.insert(2);\n        list.insert(3);\n        list.display();\n    }\n}\n ",
+  "cpp": " #include <iostream>\nusing namespace std;\n\nclass SinglyLinkedList {\nprivate:\n    struct Node {\n        int data;\n        Node* next;\n        Node(int data) : data(data), next(nullptr) {}\n    };\n    Node* head;\n\npublic:\n    SinglyLinkedList() : head(nullptr) {}\n\n    void insert(int data) {\n        Node* newNode = new Node(data);\n        if (head == nullptr) {\n            head = newNode;\n        } else {\n            Node* temp = head;\n            while (temp->next != nullptr) {\n                temp = temp->next;\n            }\n            temp->next = newNode;\n        }\n    }\n\n    void display() {\n        Node* temp = head;\n        while (temp != nullptr) {\n            cout << temp->data << \" \";\n            temp = temp->next;\n        }\n    }\n};\n\nint main() {\n    SinglyLinkedList list;\n    list.insert(1);\n    list.insert(2);\n    list.insert(3);\n    list.display();\n    return 0;\n}\n ",
+  "javascript": " class Node {\n    constructor(data) {\n        this.data = data;\n        this.next = null;\n    }\n}\n\nclass SinglyLinkedList {\n    constructor() {\n        this.head = null;\n    }\n\n    insert(data) {\n        const newNode = new Node(data);\n        if (this.head === null) {\n            this.head = newNode;\n        } else {\n            let temp = this.head;\n            while (temp.next !== null) {\n                temp = temp.next;\n            }\n            temp.next = newNode;\n        }\n    }\n\n    display() {\n        let temp = this.head;\n        while (temp !== null) {\n            process.stdout.write(temp.data + \" \");\n            temp = temp.next;\n        }\n    }\n}\n\nconst list = new SinglyLinkedList();\nlist.insert(1);\nlist.insert(2);\nlist.insert(3);\nlist.display();\n "
+
 }

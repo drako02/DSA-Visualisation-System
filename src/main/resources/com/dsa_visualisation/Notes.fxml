@@ -5,220 +5,215 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.NotesController">
    <children>
       <GridPane hgap="20.0" prefHeight="221.0" prefWidth="600.0" vgap="20.0" VBox.vgrow="ALWAYS">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-walking" iconSize="80" />
-                        <Label text="Breadth first search">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
-                        <Label text="Sort">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
-                        <Label text="Sort">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="3">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-list-ul" iconSize="80" />
-                        <Label text="Queue">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-layer-group" iconSize="75" />
-                        <Label graphicTextGap="0.0" text="Stack">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-search" iconSize="80" />
-                        <Label text="Search">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-search" iconSize="80" />
-                        <Label text="Search">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-link" iconSize="75" />
-                        <Label graphicTextGap="0.0" text="Linked list">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="2">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="80" />
-                        <Label text="Sort">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="198.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="1">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-search" iconSize="80" />
-                        <Label text="Search">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="48.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="3">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </graphic>
-            </Button>
-            <Button layoutX="10.0" layoutY="48.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-mountain" iconSize="80" />
-                        <Label text="Depth first search">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button layoutX="160.0" layoutY="348.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </graphic>
-            </Button>
-            <Button layoutX="310.0" layoutY="348.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </graphic>
-            </Button>
-            <Button layoutX="460.0" layoutY="348.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css">
-               <graphic>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <FontIcon iconLiteral="fas-arrows-alt-h" iconSize="80" />
-                        <Label text="Array">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-         </children>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
+         <children>
+            <Button fx:id="arrayButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-arrows-alt-h" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Array">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on arrays here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="linkedlistButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-link" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="325.0">
+                           <children>
+                              <Label graphicTextGap="0.0" text="Linked list">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on Linked lists here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="stackButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="1">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-layer-group" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="325.0">
+                           <children>
+                              <Label graphicTextGap="0.0" text="Stack">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on stackshere..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="queueButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-list-ul" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Queue">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on queues here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="binarysearchButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="2">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-search" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Binary Search">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on binary search here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="linearsearchButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-search" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Linear Search">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on linear search here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="bubbleSortButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="3">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Bubble Sort">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on bubble sort algorithm here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <Button fx:id="selectionsortButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <graphic>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="50">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </FontIcon>
+                        <VBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="325.0">
+                           <children>
+                              <Label text="Selection Sort">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Read more on selection sort algorithm here..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+         </children>
       </GridPane>
    </children>
 </VBox>

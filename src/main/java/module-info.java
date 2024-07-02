@@ -22,6 +22,7 @@ module dsa_visualisation.dsa_visualisation {
     requires retrofit2;
     requires service;
     requires api;
+    requires org.json;
 //    requires retrofit2.converter.jackson;
 //    requires com.theokanning.openai_gpt3_java;
 //    requires com.theokanning.openai_gpt3_java.client;

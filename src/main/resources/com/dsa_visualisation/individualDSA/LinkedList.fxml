@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.LinkedListController">
+<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.LinkedListController">
     <children>
         <VBox VBox.vgrow="ALWAYS">
             <children>
@@ -42,7 +42,7 @@
                                         <ToggleButton fx:id="jsButton" prefHeight="32.0" prefWidth="40.0" text="JS" />
                                     </toggles>
                                 </ToggleButtonGroup>
-                                <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
                     </children>

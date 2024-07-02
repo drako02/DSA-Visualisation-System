@@ -17,12 +17,19 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
+import org.json.JSONObject;
 
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -33,6 +40,21 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class BubbleSortController implements Initializable {
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
+    private ToggleButton javaButton;
+    @FXML
+    private ToggleButton cppButton;
+    @FXML
+    private ToggleButton jsButton;
+
+
+    private WebView webView;
+    private JSONObject codeJson;
+    private WebEngine webEngine;
 
     private Random rng = new Random(0);
 
@@ -94,6 +116,60 @@ public class BubbleSortController implements Initializable {
 
         borderPane.setCenter(chart);
         borderPane.setBottom(hbox);
+
+        loadJson();
+
+        webView = new WebView();
+        webEngine = webView.getEngine();
+        scrollPane.setContent(webView);
+
+        webView.prefWidthProperty().bind(scrollPane.widthProperty());
+        webView.prefHeightProperty().bind(scrollPane.heightProperty());
+
+        javaButton.setOnAction(event -> loadCode("java", "language-java"));
+        cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
+        jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+    }
+
+    private void loadJson() {
+        try {
+            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/BubbleSort.json")));
+            codeJson = new JSONObject(jsonContent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadCode(String language, String languageClass) {
+        if (codeJson != null) {
+            // Retrieve the code snippet for the selected language from the JSONObject
+            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css").toExternalForm();
+            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js").toExternalForm();
+            String code = codeJson.getString(language);
+            String htmlContent = """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <link href="%s" rel="stylesheet" />
+                <script src="%s"></script>
+            </head>
+            <body>
+                <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
+                <script>
+                    // JavaScript to set the code content
+                    function setCodeContent(code) {
+                        document.getElementById('codeBlock').textContent = code;
+                        Prism.highlightAll();
+                    }
+                    setCodeContent(`%s`);
+                </script>
+            </body>
+            </html>
+            """.formatted(prismCssPath, prismJsPath, languageClass, code);
+
+            // Load the HTML content into the WebView
+            webEngine.loadContent(htmlContent);
+        }
     }
 
     private Task<Void> createSortingTask(XYChart.Series<String, Number> series) {
