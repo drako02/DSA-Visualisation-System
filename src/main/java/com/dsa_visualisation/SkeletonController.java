@@ -2,7 +2,9 @@ package com.dsa_visualisation;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.fxmisc.richtext.InlineCssTextArea;
@@ -12,38 +14,45 @@ import java.util.ResourceBundle;
 
 public class SkeletonController implements Initializable {
 
-    @FXML
-    private ScrollPane scrollPane1;
-    @FXML
-    private ScrollPane scrollPane2;
-    @FXML
-    private ScrollPane scrollPane3;
+    public Label introHeaading;
+    public TextArea introContent;
+    public TextArea operationContent;
+    public Label operationsHeading;
+    public Label applicationHeading;
+    public TextArea applicationContent;
+
+    public ScrollPane scrollPane1;
+
+    public ScrollPane scrollPane2;
+
+
 
     private NotesLoader notesLoader;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        WebView noteArea1 = new WebView();
-        WebEngine webEngine = noteArea1.getEngine() ;
-
         notesLoader = new NotesLoader("src/main/resources/com/dsa_visualisation/Notes/DSANotes.json");
-        String arrayNote_1 = notesLoader.getDataStructureNote("array", "part1");
+        String arrayIntroHeading= notesLoader.getDataStructureNote("array", "part1").getIntroHeading();
+        String arrayIntro = notesLoader.getDataStructureNote("array", "part1").getIntro();
+        String arrayOperationsHeadding = notesLoader.getDataStructureNote("array", "part2").getOperationsHeading();
+        String arrayOperations = notesLoader.getDataStructureNote("array", "part1").getOperations();
+        String arrayApplicationsHeading = notesLoader.getDataStructureNote("array", "part1").getApplicationHeading();
+        String arrayApplications = notesLoader.getDataStructureNote("array", "part1").getApplications();
 
-        String htmlCOntent1 = """
-            <!DOCTYPE html>
-            <html>
-            <head>
-                
-            </head>
-            <body>
-                <p> %s </p>
-            </body>
-            </html>
-            """.formatted(arrayNote_1);
+        introHeaading.setText(arrayIntroHeading);
+        introContent.setText(arrayIntro);
+        operationsHeading.setText(arrayOperationsHeadding);
+        operationContent.setText(arrayOperations);
+        applicationHeading.setText(arrayApplicationsHeading);
+        applicationContent.setText(arrayApplications);
 
-        webEngine.loadContent(htmlCOntent1);
-        scrollPane1.setContent(noteArea1);
+        scrollPane1.setFitToWidth(true);
+        scrollPane1.setFitToHeight(true);
+        scrollPane2 .setFitToWidth(true);
+        scrollPane2.setFitToHeight(true);
+
+
+
 
 
     }

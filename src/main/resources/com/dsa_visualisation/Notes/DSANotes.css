@@ -1,13 +1,20 @@
 .vbox_main{
-    -fx-background-image: url("Work_7_removebg_preview.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: right bottom;
-    -fx-background-size: 40%;
+    /*-fx-background-image: url("Work_7_removebg_preview.png");*/
+    /*-fx-background-repeat: no-repeat;*/
+    /*-fx-background-position: right bottom;*/
+    /*-fx-background-size: 40%;*/
     /*width: 100px;*/
     /*height: 100px;*/
 }
 
 .scroll-pane{
     -fx-background-color: transparent;
+}
+
+#vbox1 .label, #vbox2 .label{
+    -fx-font-family: "Georgia";
+    -fx-font-size: 18px;
+    -fx-text-fill: #c79a29;
+
 }
 

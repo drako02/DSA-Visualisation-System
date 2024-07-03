@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.NotesController">
+<VBox prefHeight="600.0" prefWidth="900.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.NotesController">
    <children>
       <GridPane hgap="20.0" prefHeight="221.0" prefWidth="600.0" vgap="20.0" VBox.vgrow="ALWAYS">
          <columnConstraints>
