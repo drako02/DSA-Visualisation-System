@@ -36,7 +36,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
-import java.nio.file.*;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+
 
 public class SelectionSortController implements Initializable {
 
@@ -130,7 +132,7 @@ public class SelectionSortController implements Initializable {
 
     private void loadJson() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("/src/main/resources/com/dsa_visualisation/Codes/SelectionSort.json")));
+            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/Stack.json")));
             codeJson = new JSONObject(jsonContent);
         } catch (Exception e) {
             e.printStackTrace();

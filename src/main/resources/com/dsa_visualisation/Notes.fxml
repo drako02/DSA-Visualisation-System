@@ -167,7 +167,7 @@
                   </HBox>
                </graphic>
             </Button>
-            <Button fx:id="bubbleSortButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="3">
+            <Button fx:id="bubblesortButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button2" stylesheets="@styles.css" GridPane.rowIndex="3">
                <graphic>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>

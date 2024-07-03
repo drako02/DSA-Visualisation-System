@@ -187,6 +187,12 @@
             <version>1.29.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.fxmisc.richtext</groupId>
+            <artifactId>richtextfx</artifactId>
+            <version>0.11.3</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>

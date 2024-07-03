@@ -23,6 +23,7 @@ module dsa_visualisation.dsa_visualisation {
     requires service;
     requires api;
     requires org.json;
+    requires org.fxmisc.richtext;
 //    requires retrofit2.converter.jackson;
 //    requires com.theokanning.openai_gpt3_java;
 //    requires com.theokanning.openai_gpt3_java.client;

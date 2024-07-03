@@ -1,0 +1,13 @@
+.vbox_main{
+    -fx-background-image: url("Work_7_removebg_preview.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right bottom;
+    -fx-background-size: 40%;
+    /*width: 100px;*/
+    /*height: 100px;*/
+}
+
+.scroll-pane{
+    -fx-background-color: transparent;
+}
+

@@ -42,7 +42,7 @@
                                         <ToggleButton fx:id="jsButton" prefHeight="32.0" prefWidth="40.0" text="JS" />
                                     </toggles>
                                 </ToggleButtonGroup>
-                                <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                             </children>
                         </VBox>
                     </children>

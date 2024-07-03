@@ -3,7 +3,6 @@ package com.dsa_visualisation;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -55,7 +54,7 @@ public class StackController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    private CodeLoader codeLoader;
+    private NotesLoader codeLoader;
 
     private WebView webView;
     private JSONObject codeJson;
@@ -65,7 +64,7 @@ public class StackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        codeLoader = new CodeLoader("src/main/resources/com/dsa_visualisation/Codes/Stack.json");
+        codeLoader = new NotesLoader("src/main/resources/com/dsa_visualisation/Codes/Stack.json");
 
         VBox stackVBox = new VBox();
         stackVBox.setAlignment(Pos.BOTTOM_CENTER);
