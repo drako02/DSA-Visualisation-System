@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SkeletonController implements Initializable {
+public class BubblesortNotesController implements Initializable {
 
     public Label introHeaading;
     public TextArea introContent;

@@ -68,7 +68,7 @@ public class NotesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         arrayButton.setOnAction(event -> {
             if (!arrayLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/ArrayNotes.fxml"));
                 try {
                     arrayRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -127,8 +127,8 @@ public class NotesController implements Initializable {
         });
 
         binarysearchButton.setOnAction(event -> {
-            if (!arrayLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+            if (!binarysearchLoaded) {
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/BinarysearchNotes.fxml"));
                 try {
                     binarysearchRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -160,7 +160,7 @@ public class NotesController implements Initializable {
             if (!bubblesortLoaded) {
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
                 try {
-                    binarysearchRoot = fxmlLoader.load();
+                    bubblesortRoot = fxmlLoader.load();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

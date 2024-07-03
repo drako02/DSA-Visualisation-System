@@ -3,7 +3,6 @@ package com.dsa_visualisation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +13,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class HomepageController{
     @FXML
@@ -24,7 +21,7 @@ public class HomepageController{
     private Scene scene;
 
     @FXML
-    private BorderPane borderPane;
+    private BorderPane borderPane1;
 
     private Node initialCenter;
 
@@ -48,11 +45,11 @@ public class HomepageController{
             dataStructuresLoaded = true;
 
             DataStructuresController dataStructuresController = fxmlLoader.getController();
-            dataStructuresController.setBorderPane1(borderPane);
+            dataStructuresController.setBorderPane1(borderPane1);
         }
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
-        borderPane.setCenter(dataStructuresRoot);
+        borderPane1.setCenter(dataStructuresRoot);
     }
 
 
@@ -70,12 +67,12 @@ public class HomepageController{
             algorithmsLoaded = true;
 
             AlgorithmsController algorithmsController = fxmlLoader.getController();
-            algorithmsController.setBorderPane(borderPane);
+            algorithmsController.setBorderPane(borderPane1);
         }
 
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
-        borderPane.setCenter(algorithmsRoot);
+        borderPane1.setCenter(algorithmsRoot);
     }
 
 
@@ -88,11 +85,11 @@ public class HomepageController{
             notesLoaded = true;
 
             NotesController notesController = fxmlLoader.getController();
-            notesController.setBorderPane2(borderPane);
+            notesController.setBorderPane2(borderPane1);
         }
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
-        borderPane.setCenter(notesRoot);
+        borderPane1.setCenter(notesRoot);
     }
 
 
@@ -116,14 +113,14 @@ public class HomepageController{
         }
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
-        borderPane.setCenter(chatAIRoot);
+        borderPane1.setCenter(chatAIRoot);
     }
 
 
     @FXML
     private void onAboutButtonClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("About.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        borderPane1.setCenter(fxmlLoader.load());
     }
 
     @FXML
@@ -148,12 +145,12 @@ public class HomepageController{
     @FXML
     private void initialize(){
         defaultWidth = sidePanel.getPrefWidth();
-        initialCenter = borderPane.getCenter(); // Save the initial center node
+        initialCenter = borderPane1.getCenter(); // Save the initial center node
     }
 
     @FXML
     private void onHomeButtonClick(ActionEvent event) {
-        borderPane.setCenter(initialCenter);
+        borderPane1.setCenter(initialCenter);
     }
 
     @FXML
@@ -185,7 +182,7 @@ public class HomepageController{
     private Button bubbleSort;
     private void onBubbleSortClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
-        borderPane.setCenter(fxmlLoader.load());
+        borderPane1.setCenter(fxmlLoader.load());
     }
 
 

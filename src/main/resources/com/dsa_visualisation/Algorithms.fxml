@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.AlgorithmsController">
+<VBox prefHeight="600.0" prefWidth="900.0"  xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.AlgorithmsController">
    <children>
       <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
         <columnConstraints>

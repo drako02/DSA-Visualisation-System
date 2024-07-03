@@ -159,14 +159,15 @@ public class BinarySearchController implements Initializable {
     private void loadCode(String language, String languageClass) {
         if (codeJson != null) {
             // Retrieve the code snippet for the selected language from the JSONObject
+            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css").toExternalForm();
+            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js").toExternalForm();
             String code = codeJson.getString(language);
             String htmlContent = """
             <!DOCTYPE html>
             <html>
             <head>
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-%s.min.js"></script>
+                <link href="%s" rel="stylesheet" />
+                <script src="%s"></script>
             </head>
             <body>
                 <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
@@ -180,7 +181,7 @@ public class BinarySearchController implements Initializable {
                 </script>
             </body>
             </html>
-            """.formatted(language, languageClass, code);
+            """.formatted(prismCssPath, prismJsPath, languageClass, code);
 
             // Load the HTML content into the WebView
             webEngine.loadContent(htmlContent);

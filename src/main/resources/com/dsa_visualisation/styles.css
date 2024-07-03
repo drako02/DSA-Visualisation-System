@@ -1,3 +1,16 @@
+/*#VBox1 {*/
+/*    -fx-background-image: url("Notes/Work_7_removebg_preview.png");*/
+/*    -fx-background-repeat: no-repeat;*/
+/*    -fx-background-position: right bottom;*/
+/*    -fx-background-size: 40%;*/
+/*    !*-fx-background-color: transparent;*!*/
+/*}*/
+#borderPane1{
+    -fx-background-image: url("Notes/Work_7_removebg_preview.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right bottom;
+    -fx-background-size: 40%;
+}
 .transparent{
     -fx-background-color: rgba(0, 0, 0, 0);
 }

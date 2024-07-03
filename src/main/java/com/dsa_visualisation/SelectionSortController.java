@@ -132,7 +132,7 @@ public class SelectionSortController implements Initializable {
 
     private void loadJson() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/Stack.json")));
+            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/SelectionSort.json")));
             codeJson = new JSONObject(jsonContent);
         } catch (Exception e) {
             e.printStackTrace();
