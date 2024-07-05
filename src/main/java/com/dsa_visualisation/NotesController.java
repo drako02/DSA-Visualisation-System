@@ -83,7 +83,7 @@ public class NotesController implements Initializable {
 
         linkedlistButton.setOnAction(event -> {
             if (!linkedlistLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/LinkedlistNotes.fxml"));
                 try {
                     linkedlistRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -98,7 +98,7 @@ public class NotesController implements Initializable {
 
         stackButton.setOnAction(event -> {
             if (!stackLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/StackNotes.fxml"));
                 try {
                     stackRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -113,7 +113,7 @@ public class NotesController implements Initializable {
 
         queueButton.setOnAction(event -> {
             if (!queueLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/QueueNotes.fxml"));
                 try {
                     queueRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -143,7 +143,7 @@ public class NotesController implements Initializable {
 
         linearsearchButton.setOnAction(event -> {
             if (!linearsearchLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/LinearsearchNotes.fxml"));
                 try {
                     linearsearchRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -158,7 +158,7 @@ public class NotesController implements Initializable {
 
         bubblesortButton.setOnAction(event -> {
             if (!bubblesortLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/BubblesortNotes.fxml"));
                 try {
                     bubblesortRoot = fxmlLoader.load();
                 } catch (IOException e) {
@@ -173,7 +173,7 @@ public class NotesController implements Initializable {
 
         selectionsortButton.setOnAction(event -> {
             if (!selectionsortLoaded) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/DSANotesSkeleton.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/dsa_visualisation/Notes/SelectionsortNotes.fxml"));
                 try {
                     selectionsortRoot = fxmlLoader.load();
                 } catch (IOException e) {

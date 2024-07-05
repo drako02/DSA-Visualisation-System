@@ -80,3 +80,45 @@
 .default-color0.chart-bar {
     -fx-bar-fill: #9b8e6f;  /* Color for the first series */
 }
+
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-style: none;
+}
+.scroll-pane .scroll-bar:vertical .thumb{
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-style: none;
+    -fx-background-color:#e8d5a7 ;
+
+}
+.scroll-pane .scroll-bar:horizontal .thumb{
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-style: none;
+    -fx-background-color:#e8d5a7 ;
+
+}
+
+.scroll-pane .scroll-bar:vertical:hover {
+}
+
+.scroll-pane .scroll-bar:vertical:pressed {
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .scroll-bar:horizontal:hover {
+    -fx-background-color: #999999; /* Background color of horizontal scrollbar on hover */
+}
+
+.scroll-pane .scroll-bar:horizontal:pressed {
+    -fx-background-color: #666666; /* Background color of horizontal scrollbar when pressed */
+}

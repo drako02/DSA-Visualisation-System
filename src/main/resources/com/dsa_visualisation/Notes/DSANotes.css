@@ -15,9 +15,11 @@
     -fx-font-family: Poppins;
     -fx-font-size: 12px;
     -fx-text-fill: #000000;
+    -fx-pref-height: 400px;
+    -fx-max-height: -1;
 }
 .text-area .text {
-    -fx-line-spacing: 4px;
+    -fx-line-spacing: 2px;
 }
 
 #vbox1 .label, #vbox2 .label{

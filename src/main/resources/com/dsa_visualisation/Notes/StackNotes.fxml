@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.dsa_visualisation.Notes.StackNotes"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox fx:id="vbox_main" prefHeight="600.0" prefWidth="900.0" styleClass="vbox_main" stylesheets="@DSANotes.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.StackNotesController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="900.0">
+            <children>
+                <Label text="Data Structure/Algorithm">
+                    <font>
+                        <Font name="Poppins SemiBold" size="28.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+            <VBox.margin>
+                <Insets top="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox prefHeight="455.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fx:id="scrollPane1" opacity="0.79" prefHeight="490.0" prefWidth="522.0" HBox.hgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="vbox1" prefHeight="475.0" prefWidth="449.0">
+                            <children>
+                                <Label fx:id="introHeaading" prefHeight="17.0" prefWidth="331.0" text="Label" VBox.vgrow="ALWAYS" />
+                                <TextArea fx:id="introContent" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                                <Label fx:id="operationsHeading" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="367.0" text="Label" VBox.vgrow="ALWAYS" />
+                                <TextArea fx:id="operationContent" editable="false" layoutX="10.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </content></ScrollPane>
+                <ScrollPane fx:id="scrollPane2" opacity="0.8" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="vbox2" prefHeight="475.0" prefWidth="283.0">
+                            <children>
+                                <Label fx:id="applicationHeading" prefHeight="17.0" prefWidth="267.0" text="Label" />
+                                <TextArea fx:id="applicationContent" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </content></ScrollPane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

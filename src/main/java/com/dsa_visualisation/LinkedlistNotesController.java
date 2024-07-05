@@ -5,12 +5,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BinarysearchNotesController implements Initializable {
+public class LinkedlistNotesController implements Initializable {
 
     public Label introHeaading;
     public TextArea introContent;
@@ -20,8 +22,10 @@ public class BinarysearchNotesController implements Initializable {
     public TextArea applicationContent;
 
     public ScrollPane scrollPane1;
-
     public ScrollPane scrollPane2;
+
+    public VBox vbox1;
+    public VBox vbox2;
 
 
 
@@ -30,12 +34,12 @@ public class BinarysearchNotesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         notesLoader = new NotesLoader("src/main/resources/com/dsa_visualisation/Notes/DSANotes.json");
-        String arrayIntroHeading= notesLoader.getAlgorithmNote("binarysearch").getIntroHeading();
-        String arrayIntro = notesLoader.getAlgorithmNote("binarysearch").getIntro();
-        String arrayOperationsHeadding = notesLoader.getAlgorithmNote("binarysearch").getOperationsHeading();
-        String arrayOperations = notesLoader.getAlgorithmNote("binarysearch").getOperations();
-        String arrayApplicationsHeading = notesLoader.getAlgorithmNote("binarysearch").getApplicationHeading();
-        String arrayApplications = notesLoader.getAlgorithmNote("binarysearch").getApplications();
+        String arrayIntroHeading= notesLoader.getDataStructureNote("linkedlist").getIntroHeading();
+        String arrayIntro = notesLoader.getDataStructureNote("linkedlist").getIntro();
+        String arrayOperationsHeadding = notesLoader.getDataStructureNote("linkedlist").getOperationsHeading();
+        String arrayOperations = notesLoader.getDataStructureNote("linkedlist").getOperations();
+        String arrayApplicationsHeading = notesLoader.getDataStructureNote("linkedlist").getApplicationHeading();
+        String arrayApplications = notesLoader.getDataStructureNote("linkedlist").getApplications();
 
         introHeaading.setText(arrayIntroHeading);
         introContent.setText(arrayIntro);
@@ -49,6 +53,8 @@ public class BinarysearchNotesController implements Initializable {
         scrollPane2 .setFitToWidth(true);
         scrollPane2.setFitToHeight(true);
 
+
+        applicationContent.setPrefHeight(1000);
 
 
 

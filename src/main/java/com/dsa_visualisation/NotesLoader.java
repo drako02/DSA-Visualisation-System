@@ -69,32 +69,32 @@ public class NotesLoader {
         Contents content = new Contents(){
             @Override
             public String getIntro(){
-                return noteNode.path("DataStructures").path(algorithm).path("part1").get(1).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part1").get(1).asText();
             }
 
             @Override
             public String getIntroHeading() {
-                return noteNode.path("DataStructures").path(algorithm).path("part1").get(0).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part1").get(0).asText();
             }
 
             @Override
             public String getOperations() {
-                return noteNode.path("DataStructures").path(algorithm).path("part2").get(1).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part2").get(1).asText();
             }
 
             @Override
             public String getOperationsHeading() {
-                return noteNode.path("DataStructures").path(algorithm).path("part2").get(0).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part2").get(0).asText();
             }
 
             @Override
             public String getApplications() {
-                return noteNode.path("DataStructures").path(algorithm).path("part3").get(1).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part3").get(1).asText();
             }
 
             @Override
             public String getApplicationHeading() {
-                return noteNode.path("DataStructures").path(algorithm).path("part3").get(0).asText();
+                return noteNode.path("Algorithms").path(algorithm).path("part3").get(0).asText();
             }
         };
 

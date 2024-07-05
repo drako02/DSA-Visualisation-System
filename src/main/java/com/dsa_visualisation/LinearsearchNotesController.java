@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BinarysearchNotesController implements Initializable {
+public class LinearsearchNotesController implements Initializable {
 
     public Label introHeaading;
     public TextArea introContent;
@@ -30,12 +30,12 @@ public class BinarysearchNotesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         notesLoader = new NotesLoader("src/main/resources/com/dsa_visualisation/Notes/DSANotes.json");
-        String arrayIntroHeading= notesLoader.getAlgorithmNote("binarysearch").getIntroHeading();
-        String arrayIntro = notesLoader.getAlgorithmNote("binarysearch").getIntro();
-        String arrayOperationsHeadding = notesLoader.getAlgorithmNote("binarysearch").getOperationsHeading();
-        String arrayOperations = notesLoader.getAlgorithmNote("binarysearch").getOperations();
-        String arrayApplicationsHeading = notesLoader.getAlgorithmNote("binarysearch").getApplicationHeading();
-        String arrayApplications = notesLoader.getAlgorithmNote("binarysearch").getApplications();
+        String arrayIntroHeading= notesLoader.getAlgorithmNote("linearsearch").getIntroHeading();
+        String arrayIntro = notesLoader.getAlgorithmNote("linearsearch").getIntro();
+        String arrayOperationsHeadding = notesLoader.getAlgorithmNote("linearsearch").getOperationsHeading();
+        String arrayOperations = notesLoader.getAlgorithmNote("linearsearch").getOperations();
+        String arrayApplicationsHeading = notesLoader.getAlgorithmNote("linearsearch").getApplicationHeading();
+        String arrayApplications = notesLoader.getAlgorithmNote("linearsearch").getApplications();
 
         introHeaading.setText(arrayIntroHeading);
         introContent.setText(arrayIntro);

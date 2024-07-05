@@ -30,12 +30,12 @@ public class BubblesortNotesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         notesLoader = new NotesLoader("src/main/resources/com/dsa_visualisation/Notes/DSANotes.json");
-        String arrayIntroHeading= notesLoader.getDataStructureNote("array").getIntroHeading();
-        String arrayIntro = notesLoader.getDataStructureNote("array").getIntro();
-        String arrayOperationsHeadding = notesLoader.getDataStructureNote("array").getOperationsHeading();
-        String arrayOperations = notesLoader.getDataStructureNote("array").getOperations();
-        String arrayApplicationsHeading = notesLoader.getDataStructureNote("array").getApplicationHeading();
-        String arrayApplications = notesLoader.getDataStructureNote("array").getApplications();
+        String arrayIntroHeading= notesLoader.getAlgorithmNote("bubblesort").getIntroHeading();
+        String arrayIntro = notesLoader.getAlgorithmNote("bubblesort").getIntro();
+        String arrayOperationsHeadding = notesLoader.getAlgorithmNote("bubblesort").getOperationsHeading();
+        String arrayOperations = notesLoader.getAlgorithmNote("bubblesort").getOperations();
+        String arrayApplicationsHeading = notesLoader.getAlgorithmNote("bubblesort").getApplicationHeading();
+        String arrayApplications = notesLoader.getAlgorithmNote("bubblesort").getApplications();
 
         introHeaading.setText(arrayIntroHeading);
         introContent.setText(arrayIntro);
