@@ -13,7 +13,7 @@
 
 <BorderPane fx:id="borderPane1" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dsa_visualisation.HomepageController">
    <left>
-      <VBox fx:id="sidePanel" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="180.0" style="-fx-background-color: #e8d5a7;" BorderPane.alignment="CENTER">
+      <VBox fx:id="sidePanel" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="185.0" style="-fx-background-color: #e8d5a7;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="39.0" prefWidth="160.0">
                <VBox.margin>
@@ -36,7 +36,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="ion4-md-home" iconSize="20" selectionEnd="0" />
@@ -54,7 +54,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="fas-database" iconSize="20" />
@@ -72,7 +72,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="fas-code-branch" iconSize="20" />
@@ -90,7 +90,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="bi-file-text-fill" iconSize="20" strokeType="OUTSIDE">
@@ -112,7 +112,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-chatbubbles" iconSize="20" selectionEnd="0" />
@@ -130,7 +130,7 @@
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
                <font>
-                  <Font name="Segoe UI Semilight" size="14.0" />
+                  <Font name="Poppins Regular" size="14.0" />
                </font>
                <graphic>
                   <FontIcon iconLiteral="bi-info-circle-fill" iconSize="20" />
@@ -176,7 +176,7 @@
                <children>
                   <Label prefHeight="40.0" text="Home">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Poppins Regular" size="27.0" />
                      </font>
                   </Label>
                </children>
@@ -252,7 +252,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Linked list" VBox.vgrow="ALWAYS">
@@ -260,7 +260,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Queue" VBox.vgrow="ALWAYS">
@@ -268,7 +268,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                      </children>
@@ -280,7 +280,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Bubble sort" VBox.vgrow="ALWAYS">
@@ -288,7 +288,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Array" VBox.vgrow="ALWAYS">
@@ -296,7 +296,7 @@
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Segoe UI Semibold" size="18.0" />
+                              <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
                      </children>

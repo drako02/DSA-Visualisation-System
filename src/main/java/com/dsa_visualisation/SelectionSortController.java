@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -14,14 +16,16 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -39,7 +43,6 @@ import java.util.stream.Collectors;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
-
 public class SelectionSortController implements Initializable {
 
     @FXML
@@ -51,7 +54,6 @@ public class SelectionSortController implements Initializable {
     private ToggleButton cppButton;
     @FXML
     private ToggleButton jsButton;
-
 
     private WebView webView;
     private JSONObject codeJson;
@@ -68,6 +70,8 @@ public class SelectionSortController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+    private DoubleProperty animationSpeed = new SimpleDoubleProperty(1.0);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BarChart<String, Number> chart = new BarChart<>(new CategoryAxis(), new NumberAxis());
@@ -81,9 +85,17 @@ public class SelectionSortController implements Initializable {
         Button sort = new Button("Sort");
         Button reset = new Button("Reset");
 
-        submit.setOnAction(e ->{
+        Slider speedSlider = new Slider(0.1, 4.0, 1.0);
+        speedSlider.setShowTickLabels(true);
+        speedSlider.setShowTickMarks(true);
+        speedSlider.setMajorTickUnit(1);
+        speedSlider.setMinorTickCount(5);
+        speedSlider.setBlockIncrement(0.1);
+        animationSpeed.bind(speedSlider.valueProperty());
+
+        submit.setOnAction(e -> {
             String inputText = inputField.getText();
-            Series <String, Number> series = createSeriesFromInput(inputText);
+            XYChart.Series<String, Number> series = createSeriesFromInput(inputText);
             chart.getData().setAll(series);
             sort.setDisable(false);
         });
@@ -91,7 +103,8 @@ public class SelectionSortController implements Initializable {
         reset.setOnAction(e -> {
             inputField.clear();
             chart.getData().clear();
-            sort.setDisable(true);
+//            sort.setDisable(true);
+            chart.getData().setAll(createRandomSeries());
         });
 
         HBox inputBox = new HBox(5, inputField, submit);
@@ -102,8 +115,10 @@ public class SelectionSortController implements Initializable {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
-        HBox hbox = new HBox(5, buttons, inputBox);
-        hbox.setAlignment(Pos.CENTER);
+
+        HBox hbox = new HBox(5, buttons, inputBox, speedSlider);
+        HBox.setHgrow(speedSlider, Priority.ALWAYS);
+        hbox.setAlignment(Pos.CENTER_LEFT);
         hbox.setPadding(new Insets(5));
 
         sort.setOnAction(e -> {
@@ -113,8 +128,13 @@ public class SelectionSortController implements Initializable {
             exec.submit(animateSortTask);
         });
 
+        VBox vbox = new VBox(5, chart);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPadding(new Insets(10));
         borderPane.setCenter(chart);
         borderPane.setBottom(hbox);
+
+        chart.getData().add(createRandomSeries());
 
         loadJson();
 
@@ -128,11 +148,16 @@ public class SelectionSortController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
+
+//        Platform.runLater(() -> javaButton.fire());
+
     }
 
     private void loadJson() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/SelectionSort.json")));
+            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/Stack.json")));
             codeJson = new JSONObject(jsonContent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,25 +171,25 @@ public class SelectionSortController implements Initializable {
             String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js").toExternalForm();
             String code = codeJson.getString(language);
             String htmlContent = """
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <link href="%s" rel="stylesheet" />
-                <script src="%s"></script>
-            </head>
-            <body>
-                <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
-                <script>
-                    // JavaScript to set the code content
-                    function setCodeContent(code) {
-                        document.getElementById('codeBlock').textContent = code;
-                        Prism.highlightAll();
-                    }
-                    setCodeContent(`%s`);
-                </script>
-            </body>
-            </html>
-            """.formatted(prismCssPath, prismJsPath, languageClass, code);
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <link href="%s" rel="stylesheet" />
+                        <script src="%s"></script>
+                    </head>
+                    <body>
+                        <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
+                        <script>
+                            // JavaScript to set the code content
+                            function setCodeContent(code) {
+                                document.getElementById('codeBlock').textContent = code;
+                                Prism.highlightAll();
+                            }
+                            setCodeContent(`%s`);
+                        </script>
+                    </body>
+                    </html>
+                    """.formatted(prismCssPath, prismJsPath, languageClass, code);
 
             // Load the HTML content into the WebView
             webEngine.loadContent(htmlContent);
@@ -185,23 +210,21 @@ public class SelectionSortController implements Initializable {
 
                         Platform.runLater(() -> {
                             minValueData.getNode().setStyle("-fx-background-color: red;");
-
                         });
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         Platform.runLater(() -> {
                             currentValueData.getNode().setStyle("-fx-background-color: green;");
-
                         });
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         if (currentValueData.getYValue().doubleValue() < minValueData.getYValue().doubleValue()) {
                             minIndex = j;
                         }
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         Platform.runLater(() -> {
                             minValueData.getNode().setStyle("");
@@ -218,7 +241,7 @@ public class SelectionSortController implements Initializable {
                             second.getNode().setStyle("-fx-background-color: red;");
                         });
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         CountDownLatch latch = new CountDownLatch(1);
                         Platform.runLater(() -> {
@@ -228,20 +251,18 @@ public class SelectionSortController implements Initializable {
                         });
                         latch.await();
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         Platform.runLater(() -> {
                             first.getNode().setStyle("");
                             second.getNode().setStyle("");
                         });
-
                     }
                     int sortedIndex = i;
-                    Thread.sleep(500);
+                    Thread.sleep((long) (500 / animationSpeed.get()));
                     Platform.runLater(() -> data.get(sortedIndex).getNode().setStyle("-fx-background-color: turquoise;"));
-
                 }
-                Platform.runLater(() ->data.get(n-1).getNode().setStyle("-fx-background-color: turquoise"));
+                Platform.runLater(() -> data.get(n - 1).getNode().setStyle("-fx-background-color: turquoise;"));
                 return null;
             }
         };
@@ -254,9 +275,9 @@ public class SelectionSortController implements Initializable {
         double firstStartTranslate = first.getNode().getTranslateX();
         double secondStartTranslate = second.getNode().getTranslateX();
 
-        TranslateTransition firstTranslate = new TranslateTransition(Duration.millis(500), first.getNode());
+        TranslateTransition firstTranslate = new TranslateTransition(Duration.millis(500 / animationSpeed.get()), first.getNode());
         firstTranslate.setByX(secondX - firstX);
-        TranslateTransition secondTranslate = new TranslateTransition(Duration.millis(500), second.getNode());
+        TranslateTransition secondTranslate = new TranslateTransition(Duration.millis(500 / animationSpeed.get()), second.getNode());
         secondTranslate.setByX(firstX - secondX);
         ParallelTransition translate = new ParallelTransition(firstTranslate, secondTranslate);
 
@@ -267,7 +288,6 @@ public class SelectionSortController implements Initializable {
                 second.setYValue(temp);
                 first.getNode().setTranslateX(firstStartTranslate);
                 second.getNode().setTranslateX(secondStartTranslate);
-
             }
         });
 
@@ -275,13 +295,22 @@ public class SelectionSortController implements Initializable {
     }
 
     private XYChart.Series<String, Number> createSeriesFromInput(String input) {
-        List <Integer> numbers = Arrays.stream(input.split(","))
+        List<Integer> numbers = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        Series <String, Number> series = new Series<>();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (int i = 0; i < numbers.size(); i++) {
             series.getData().add(new Data<>(Integer.toString(i + 1), numbers.get(i)));
+        }
+        return series;
+    }
+
+    private XYChart.Series<String, Number> createRandomSeries() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < 8; i++) {
+            int randomValue = rng.nextInt(100) + 1; // Random value between 1 and 100
+            series.getData().add(new Data<>(Integer.toString(i + 1), randomValue));
         }
         return series;
     }

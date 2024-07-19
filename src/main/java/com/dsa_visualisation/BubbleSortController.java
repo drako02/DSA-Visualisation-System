@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -16,12 +18,10 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.*;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -67,6 +67,8 @@ public class BubbleSortController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+    private DoubleProperty animationSpeed = new SimpleDoubleProperty(1.0);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BarChart<String, Number> chart = new BarChart<>(new CategoryAxis(), new NumberAxis());
@@ -82,6 +84,14 @@ public class BubbleSortController implements Initializable {
 
         Button reset = new Button("Reset");
 
+        Slider speedSlider = new Slider(0.1, 4.0, 1.0);
+        speedSlider.setShowTickLabels(true);
+        speedSlider.setShowTickMarks(true);
+        speedSlider.setMajorTickUnit(1);
+        speedSlider.setMinorTickCount(5);
+        speedSlider.setBlockIncrement(0.1);
+        animationSpeed.bind(speedSlider.valueProperty());
+
         submit.setOnAction(e -> {
             String inputText = inputField.getText();
             XYChart.Series<String, Number> series = createSeriesFromInput(inputText);
@@ -92,7 +102,8 @@ public class BubbleSortController implements Initializable {
         reset.setOnAction(e -> {
             inputField.clear();
             chart.getData().clear();
-            sort.setDisable(true);
+//            sort.setDisable(true);
+            chart.getData().setAll(createRandomSeries());
         });
 
         HBox inputBox = new HBox(5, inputField, submit);
@@ -103,8 +114,9 @@ public class BubbleSortController implements Initializable {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
-        HBox hbox = new HBox(5, buttons, inputBox) ;
-        hbox.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(5, buttons, inputBox, speedSlider) ;
+        HBox.setHgrow(speedSlider, Priority.ALWAYS);
+        hbox.setAlignment(Pos.CENTER_LEFT);
         hbox.setPadding(new Insets(5));
 
         sort.setOnAction(e -> {
@@ -116,6 +128,8 @@ public class BubbleSortController implements Initializable {
 
         borderPane.setCenter(chart);
         borderPane.setBottom(hbox);
+
+        chart.getData().add(createRandomSeries());
 
         loadJson();
 
@@ -129,6 +143,8 @@ public class BubbleSortController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -188,7 +204,7 @@ public class BubbleSortController implements Initializable {
                             second.getNode().setStyle("-fx-background-color: green;");
                         });
 
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         if (first.getYValue().doubleValue() > second.getYValue().doubleValue()) {
                             CountDownLatch latch = new CountDownLatch(1);
@@ -199,7 +215,7 @@ public class BubbleSortController implements Initializable {
                             });
                             latch.await();
                         }
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));
 
                         Platform.runLater(() -> {
                             first.getNode().setStyle("");
@@ -220,9 +236,9 @@ public class BubbleSortController implements Initializable {
         double firstStartTranslate = first.getNode().getTranslateX();
         double secondStartTranslate = second.getNode().getTranslateX();
 
-        TranslateTransition firstTranslate = new TranslateTransition(Duration.millis(500), first.getNode());
+        TranslateTransition firstTranslate = new TranslateTransition(Duration.millis(500 / animationSpeed.get()), first.getNode());
         firstTranslate.setByX(secondX - firstX);
-        TranslateTransition secondTranslate = new TranslateTransition(Duration.millis(500), second.getNode());
+        TranslateTransition secondTranslate = new TranslateTransition(Duration.millis(500 / animationSpeed.get()), second.getNode());
         secondTranslate.setByX(firstX - secondX);
         ParallelTransition translate = new ParallelTransition(firstTranslate, secondTranslate);
 
@@ -248,6 +264,15 @@ public class BubbleSortController implements Initializable {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (int i = 0; i < numbers.size(); i++) {
             series.getData().add(new XYChart.Data<>(Integer.toString(i + 1), numbers.get(i)));
+        }
+        return series;
+    }
+
+    private XYChart.Series<String, Number> createRandomSeries() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < 8; i++) {
+            int randomValue = rng.nextInt(100) + 1; // Random value between 1 and 100
+            series.getData().add(new Data<>(Integer.toString(i + 1), randomValue));
         }
         return series;
     }

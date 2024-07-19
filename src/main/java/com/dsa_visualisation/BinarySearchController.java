@@ -2,6 +2,8 @@ package com.dsa_visualisation;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -24,9 +27,7 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
@@ -48,6 +49,8 @@ public class BinarySearchController implements Initializable {
     private JSONObject codeJson;
     private WebEngine webEngine;
 
+    private Random rng = new Random();
+
     private ExecutorService exec = Executors.newCachedThreadPool(runnable -> {
         Thread t = new Thread(runnable);
         t.setDaemon(true);
@@ -56,6 +59,8 @@ public class BinarySearchController implements Initializable {
 
     @FXML
     private BorderPane borderPane;
+
+    private DoubleProperty animationSpeed = new SimpleDoubleProperty(1.0);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,11 +73,19 @@ public class BinarySearchController implements Initializable {
 
         TextField searchField = new TextField();
         searchField.setPromptText("Enter element to search for");
-        searchField.setPrefWidth(150);
+        searchField.setPrefWidth(50);
 
         Button submit = new Button("Submit");
         Button search = new Button("Search");
         Button reset = new Button("Reset");
+
+        Slider speedSlider = new Slider(0.1, 4.0, 1.0);
+        speedSlider.setShowTickLabels(true);
+        speedSlider.setShowTickMarks(true);
+        speedSlider.setMajorTickUnit(1);
+        speedSlider.setMinorTickCount(5);
+        speedSlider.setBlockIncrement(0.1);
+        animationSpeed.bind(speedSlider.valueProperty());
 
         submit.setOnAction(e -> {
             String inputText = inputField.getText();
@@ -82,7 +95,7 @@ public class BinarySearchController implements Initializable {
                     .collect(Collectors.toList());
 
             if (!isSorted(numbers)) {
-                showAlert("Binary search only works on sorted lists");
+                showAlert("Binary search only works only on sorted arrays");
                 return;
             }
 
@@ -101,7 +114,16 @@ public class BinarySearchController implements Initializable {
             inputField.clear();
             searchField.clear();
             chart.getData().clear();
-            search.setDisable(true);
+//            search.setDisable(true);
+            XYChart.Series<String, Number> series1 = createRandomSeries();
+            chart.getData().setAll(series1);
+//            search.setDisable(false);
+
+            XYChart.Data<String, Number> iterator1 = new XYChart.Data<>("-1", 0);
+            series1.getData().add(0, iterator1);
+            Platform.runLater(() -> {
+                iterator1.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+            });
         });
 
         HBox inputBox = new HBox(5, inputField, submit);
@@ -116,8 +138,9 @@ public class BinarySearchController implements Initializable {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
-        HBox hbox = new HBox(5, buttons, inputBox, searchBox);
-        hbox.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(5, buttons, inputBox, searchBox, speedSlider);
+        HBox.setHgrow(speedSlider, Priority.ALWAYS);
+        hbox.setAlignment(Pos.CENTER_LEFT);
         hbox.setPadding(new Insets(5));
 
         search.setOnAction(e -> {
@@ -133,6 +156,15 @@ public class BinarySearchController implements Initializable {
         borderPane.setCenter(chart);
         borderPane.setBottom(hbox);
 
+        XYChart.Series<String, Number> series1 = createRandomSeries();
+        chart.getData().setAll(series1);
+
+        XYChart.Data<String, Number> iterator1 = new XYChart.Data<>("-1", 0);
+        series1.getData().add(0, iterator1);
+        Platform.runLater(() -> {
+            iterator1.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+        });
+
         loadJson();
 
         webView = new WebView();
@@ -145,6 +177,8 @@ public class BinarySearchController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -207,7 +241,7 @@ public class BinarySearchController implements Initializable {
 
                 Platform.runLater(() -> iterator.setYValue(target));
 
-                Thread.sleep(1000);
+                Thread.sleep((long) (1000 / animationSpeed.get()));;
 
                 int left = 1;
                 int right = data.size() - 1;
@@ -217,17 +251,17 @@ public class BinarySearchController implements Initializable {
                     int mid = left + (right - left) / 2;
                     Data<String, Number> midData = data.get(mid);
 
-                    double midX = midData.getNode().getParent().localToScene(midData.getNode().getBoundsInParent()).getMinX();
-                    double iteratorX = iterator.getNode().getParent().localToScene(iterator.getNode().getBoundsInParent()).getMinX();
-                    double distance = midX - iteratorX;
-
                     Platform.runLater(() -> {
+                        double midX = midData.getNode().getParent().localToScene(midData.getNode().getBoundsInParent()).getMinX();
+                        double iteratorX = iterator.getNode().getParent().localToScene(iterator.getNode().getBoundsInParent()).getMinX();
+                        double distance = midX - iteratorX;
+
                         TranslateTransition move = new TranslateTransition(Duration.millis(500), iterator.getNode());
                         move.setByX(distance);
                         move.play();
                     });
 
-                    Thread.sleep(750);
+                    Thread.sleep((long) (750 / animationSpeed.get()));
 
                     if (midData.getYValue().doubleValue() == target) {
                         found = true;
@@ -242,12 +276,19 @@ public class BinarySearchController implements Initializable {
                         right = mid - 1;
                     }
 
-                    Thread.sleep(500);
+                    Thread.sleep((long) (500 / animationSpeed.get()));
                 }
 
                 if (!found) {
                     Platform.runLater(() -> iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;"));
                 }
+
+                Platform.runLater(() -> {
+                    iterator.setXValue("-1");
+                    iterator.setYValue(0);
+                    iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+
+                });
 
                 return null;
             }
@@ -269,4 +310,23 @@ public class BinarySearchController implements Initializable {
         }
         return series;
     }
+
+    private XYChart.Series<String, Number> createRandomSeries() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        List<Integer> randomValues = new ArrayList<>();
+
+        for (int i = 0; i < 8; i++) {
+            int randomValue = rng.nextInt(100) + 1; // Random value between 1 and 100
+            randomValues.add(randomValue);
+        }
+
+        Collections.sort(randomValues); // Sort the values in ascending order
+
+        for (int i = 0; i < randomValues.size(); i++) {
+            series.getData().add(new XYChart.Data<>(Integer.toString(i + 1), randomValues.get(i)));
+        }
+
+        return series;
+    }
+
 }

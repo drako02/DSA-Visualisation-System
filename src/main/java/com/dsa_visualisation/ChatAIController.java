@@ -7,15 +7,10 @@ import com.theokanning.openai.service.OpenAiService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -25,6 +20,8 @@ public class ChatAIController implements Initializable {
     @FXML
     private TextField userInput;
 
+    @FXML
+    private VBox chatArea;
 
     @FXML
     private Button sendButton;
@@ -37,19 +34,10 @@ public class ChatAIController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        VBox chatArea = new VBox();
-        scrollPane.setContent(chatArea);
-        scrollPane.setOpacity(0.7);
-
-        VBox userTextFlow = new VBox();
-        VBox responseTextFlow = new VBox();
-        userTextFlow.setAlignment(Pos.CENTER_LEFT);
-        responseTextFlow.setAlignment(Pos.CENTER_LEFT);
+        scrollPane.setFitToWidth(true); // Optional: Allow ScrollPane to resize horizontally
 
 
-
-        chatArea.prefWidthProperty().bind(scrollPane.widthProperty());
-        chatArea.prefHeightProperty().bind(scrollPane.heightProperty());
+        chatArea.setSpacing(10);
 
 
         userInput.setPromptText("Ask about Data Structures and Algorithms...");
@@ -58,13 +46,14 @@ public class ChatAIController implements Initializable {
 
         sendButton.setOnAction(event -> {
             String question = userInput.getText();
-            Text userText = new Text("You: " + question + "\n");
-            userText.setStyle("-fx-fill: black; -fx-font-size: 13px; -fx-font-family: Poppins; -fx-line-spacing: 4px;");
-
-            userTextFlow.setAlignment(Pos.CENTER_LEFT);
-            userTextFlow.setStyle("-fx-background-color: rgba(232, 213, 167, 0.2); -fx-alignment: center-left;");
-            userTextFlow.getChildren().add(userText);
-            chatArea.getChildren().add(userTextFlow);
+            Label userText = new Label("You: " + question + "\n");
+            HBox userTextArea = new HBox();
+            userTextArea.setAlignment(Pos.CENTER_LEFT);
+//            userText.setStyle("-fx-fill: blue; -fx-font-weight: bold;");
+            userText.setStyle("-fx-background-color: rgba(232, 213, 167, 0.5);");
+            userText.setWrapText(true);
+            userTextArea.getChildren().add(userText);
+            chatArea.getChildren().add(userTextArea);
 
             Task<String> task = new Task<String>() {
                 @Override
@@ -75,21 +64,25 @@ public class ChatAIController implements Initializable {
 
             task.setOnSucceeded(e -> {
                 String response = task.getValue();
-                Text responseText = new Text("OpenAI: " + response + "\n");
-                responseText.setStyle("-fx-fill: black; -fx-font-size: 13px; -fx-font-family: Poppins; -fx-line-spacing: 4px; -fx-font-weight: 300");
-
-                responseTextFlow.setStyle("-fx-background-color: rgba(52, 53, 206, 0.2); -fx-alignment: center-left;");
-                responseTextFlow.getChildren().add(responseText);
-
-                chatArea.getChildren().add(responseTextFlow);
+                HBox responseTextArea = new HBox();
+                responseTextArea.setAlignment(Pos.CENTER_RIGHT);
+                Label responseText = new Label("OpenAI: " + response + "\n");
+                responseText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
+                responseText.setWrapText(true);
+                responseTextArea.getChildren().add(responseText);
+                chatArea.getChildren().add(responseTextArea);
                 userInput.clear();
             });
 
             task.setOnFailed(e -> {
-                Text errorText = new Text("Error: " + task.getException().getMessage() + "\n");
-                errorText.setStyle("-fx-fill: red;");
-                VBox errorTextFlow = new VBox(errorText);
-                chatArea.getChildren().add(errorTextFlow);
+                HBox errorTextArea = new HBox();
+                errorTextArea.setAlignment(Pos.CENTER_RIGHT);
+                Label errorText = new Label("Error: " + task.getException().getMessage() + "\n");
+
+                errorText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
+                errorText.setWrapText(true);
+                errorTextArea.getChildren().add(errorText);
+                chatArea.getChildren().add(errorTextArea);
             });
 
             new Thread(task).start();

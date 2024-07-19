@@ -2,6 +2,8 @@ package com.dsa_visualisation;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -13,12 +15,10 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -29,6 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -51,6 +52,8 @@ public class LinearSearchController implements Initializable {
     private JSONObject codeJson;
     private WebEngine webEngine;
 
+    private Random rng = new Random(0);
+
     private ExecutorService exec = Executors.newCachedThreadPool(runnable -> {
         Thread t = new Thread(runnable);
         t.setDaemon(true);
@@ -59,6 +62,8 @@ public class LinearSearchController implements Initializable {
 
     @FXML
     private BorderPane borderPane;
+
+    private DoubleProperty animationSpeed = new SimpleDoubleProperty(1.0);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,11 +76,19 @@ public class LinearSearchController implements Initializable {
 
         TextField searchField = new TextField();
         searchField.setPromptText("Enter element to search for");
-        searchField.setPrefWidth(150);
+        searchField.setPrefWidth(50);
 
         Button submit = new Button("Submit");
         Button search = new Button("Search");
         Button reset = new Button("Reset");
+
+        Slider speedSlider = new Slider(0.1, 4.0, 1.0);
+        speedSlider.setShowTickLabels(true);
+        speedSlider.setShowTickMarks(true);
+        speedSlider.setMajorTickUnit(1);
+        speedSlider.setMinorTickCount(5);
+        speedSlider.setBlockIncrement(0.1);
+        animationSpeed.bind(speedSlider.valueProperty());
 
         submit.setOnAction(e -> {
             String inputText = inputField.getText();
@@ -95,7 +108,16 @@ public class LinearSearchController implements Initializable {
             inputField.clear();
             searchField.clear();
             chart.getData().clear();
-            search.setDisable(true);
+//            search.setDisable(true);
+            XYChart.Series<String, Number> series = createRandomSeries();
+            chart.getData().setAll(series);
+            search.setDisable(false);
+
+            XYChart.Data<String, Number> iterator = new XYChart.Data<>("-1", 0);
+            series.getData().add(0, iterator);
+            Platform.runLater(() -> {
+                iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+            });
         });
 
         HBox inputBox = new HBox(5, inputField, submit);
@@ -110,8 +132,9 @@ public class LinearSearchController implements Initializable {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
-        HBox hbox = new HBox(5, buttons, inputBox, searchBox);
-        hbox.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(5, buttons, inputBox, searchBox, speedSlider);
+        HBox.setHgrow(speedSlider, Priority.ALWAYS);
+        hbox.setAlignment(Pos.CENTER_LEFT);
         hbox.setPadding(new Insets(5));
 
         search.setOnAction(e -> {
@@ -126,6 +149,15 @@ public class LinearSearchController implements Initializable {
 
         borderPane.setCenter(chart);
         borderPane.setBottom(hbox);
+
+        XYChart.Series<String, Number> series = createRandomSeries();
+        chart.getData().setAll(series);
+
+        XYChart.Data<String, Number> iterator = new XYChart.Data<>("-1", 0);
+        series.getData().add(0, iterator);
+        Platform.runLater(() -> {
+            iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+        });
 
         loadJson();
 
@@ -193,27 +225,27 @@ public class LinearSearchController implements Initializable {
                 // Update iterator bar height to target value
                 Platform.runLater(() -> iterator.setYValue(target));
 
-                Thread.sleep(1000);
+                Thread.sleep((long) (1000 / animationSpeed.get()));;
 
                 for (int i = 1; i < data.size(); i++) {
                     Data<String, Number> current = data.get(i);
 
-                    double targetX = current.getNode().getParent().localToScene(current.getNode().getBoundsInParent()).getMinX();
-                    double iteratorX = iterator.getNode().getParent().localToScene(iterator.getNode().getBoundsInParent()).getMinX();
-                    double distance = targetX - iteratorX;
-
                     Platform.runLater(() -> {
+                        double targetX = current.getNode().getParent().localToScene(current.getNode().getBoundsInParent()).getMinX();
+                        double iteratorX = iterator.getNode().getParent().localToScene(iterator.getNode().getBoundsInParent()).getMinX();
+                        double distance = targetX - iteratorX;
+
                         TranslateTransition move = new TranslateTransition(Duration.millis(500), iterator.getNode());
                         move.setByX(distance);
                         move.play();
                     });
 
-                    Thread.sleep(750); // Wait for the animation to complete
+                    Thread.sleep((long) (750 / animationSpeed.get()));; // Wait for the animation to complete
 
                     if (current.getYValue().doubleValue() == target) {
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));;
                         Platform.runLater(() -> iterator.getNode().setStyle("-fx-border-color: green; -fx-border-width: 4px; -fx-background-color: transparent;"));
-                        Thread.sleep(500);
+                        Thread.sleep((long) (500 / animationSpeed.get()));;
                         Platform.runLater(() -> current.getNode().setStyle("-fx-background-color: blue;"));
                         break;
                     }
@@ -237,6 +269,15 @@ public class LinearSearchController implements Initializable {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (int i = 0; i < numbers.size(); i++) {
             series.getData().add(new XYChart.Data<>(Integer.toString(i + 1), numbers.get(i)));
+        }
+        return series;
+    }
+
+    private XYChart.Series<String, Number> createRandomSeries() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < 8; i++) {
+            int randomValue = rng.nextInt(100) + 1; // Random value between 1 and 100
+            series.getData().add(new Data<>(Integer.toString(i + 1), randomValue));
         }
         return series;
     }
