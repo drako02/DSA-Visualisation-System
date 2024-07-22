@@ -1,6 +1,6 @@
 package com.dsa_visualisation;
 
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -128,6 +129,8 @@ public class QueueController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -187,17 +190,31 @@ public class QueueController implements Initializable {
                     stackPane.setAlignment(Pos.CENTER);
 
                     if (!queueElements.isEmpty()) {
-                        Line arrow = new Line(0, 0, 50, 0); // Arrow line from one circle to the next
+                        Line arrow = new Line(0, 0, 0, 0); // Arrow line from one circle to the next
+
                         arrow.setStroke(Color.BLACK);
+                        arrow.setStrokeWidth(5);
                         StackPane arrowPane = new StackPane(arrow);
                         queueHBox.getChildren().add(arrowPane);
+
+                        Timeline timeline = new Timeline();
+                        KeyFrame keyFrame = new KeyFrame(
+                                Duration.millis(500),
+                                new KeyValue(arrow.endXProperty(), 50),
+                                new KeyValue(arrow.endYProperty(), 0)
+                        );
+
+                        timeline.getKeyFrames().add(keyFrame);
+                        timeline.play();
+
+
                     }
 
                     queueHBox.getChildren().add(stackPane); // Add new element to the end
                     queueElements.add(stackPane);
 
                     // Animation to move the stackPane to the correct position
-                    TranslateTransition transition = new TranslateTransition(Duration.millis(500), stackPane);
+                    TranslateTransition transition = new TranslateTransition(Duration.millis(850), stackPane);
                     transition.setFromX(queueHBox.getWidth());
                     transition.setToX(0);
                     transition.play();
@@ -215,14 +232,49 @@ public class QueueController implements Initializable {
                     StackPane frontElement = queueElements.remove(0);
                     Platform.runLater(() -> {
                         // Animate the front element out of the view
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(500), frontElement);
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(850), frontElement);
                         transition.setByX(-queueHBox.getWidth());
                         transition.setOnFinished(event -> queueHBox.getChildren().remove(frontElement));
 
                         // If there's an arrow after the front element, remove it
                         if (queueHBox.getChildren().size() > 1) {
-                            queueHBox.getChildren().remove(1); // Remove the arrow after the front element
+                            StackPane arrowStackpane = (StackPane) queueHBox.getChildren().get(1);
+                            Line arrowLine = (Line) arrowStackpane.getChildren().getFirst();
+//                            Timeline timeline = new Timeline();
+//                            KeyFrame keyFrame = new KeyFrame(
+//                                    Duration.millis(200),
+//                                    new KeyValue(arrowLine.endXProperty(), 0),
+//                                    new KeyValue(arrowLine.endYProperty(), 0)
+//                            );
+//
+//                            timeline.getKeyFrames().add(keyFrame);
+//                            timeline.play();
+
+//                            FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), arrowLine);
+//                            fadeTransition.setFromValue(1.0);
+//                            fadeTransition.setToValue(0.0);
+//
+//                            fadeTransition.setOnFinished(event ->
+//                                    queueHBox.getChildren().remove(1)
+//                            );
+//
+//                            fadeTransition.play();
+
+                            Timeline timeline = new Timeline();
+
+                            KeyFrame keyFrame = new KeyFrame(
+                                    Duration.millis(500),
+                                    new KeyValue(arrowLine.endXProperty(), arrowLine.getStartX()),
+                                    new KeyValue(arrowLine.endYProperty(), arrowLine.getStartY())
+                            );
+                            timeline.getKeyFrames().add(keyFrame);
+                            timeline.setOnFinished(event -> queueHBox.getChildren().remove(1));
+                            timeline.play();
+
+
+//                            queueHBox.getChildren().remove(1); // Remove the arrow after the front element
                         }
+
 
                         transition.play();
                     });

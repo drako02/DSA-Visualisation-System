@@ -56,7 +56,7 @@ public class BubbleSortController implements Initializable {
     private JSONObject codeJson;
     private WebEngine webEngine;
 
-    private Random rng = new Random(0);
+    private Random rng = new Random();
 
     private ExecutorService exec = Executors.newCachedThreadPool(runnable -> {
         Thread t = new Thread(runnable);

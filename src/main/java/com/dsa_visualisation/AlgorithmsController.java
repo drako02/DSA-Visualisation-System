@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
 public class AlgorithmsController {
-    @FXML
+//    @FXML
     private BorderPane borderPane;
 
     public void setBorderPane(BorderPane borderPane){

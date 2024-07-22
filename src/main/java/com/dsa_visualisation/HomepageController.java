@@ -28,6 +28,8 @@ public class HomepageController{
 
     private boolean dataStructuresLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent dataStructuresRoot; // Reference to the loaded DataStructures.fxml root
+    private DataStructuresController dataStructuresController; // Reference to the DataStructuresController instance
+    private AlgorithmsController algorithmsController;
 
     private boolean chatAILoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent chatAIRoot;
@@ -143,9 +145,21 @@ public class HomepageController{
     private double defaultWidth;
 
     @FXML
+    private Button algorithmsMainButton;
+
+
+    @FXML
     private void initialize(){
         defaultWidth = sidePanel.getPrefWidth();
         initialCenter = borderPane1.getCenter(); // Save the initial center node
+
+        algorithmsMainButton.setOnAction(event -> {
+            try {
+                onAlgorithmsButtonClick(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @FXML
@@ -183,6 +197,108 @@ public class HomepageController{
     private void onBubbleSortClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
         borderPane1.setCenter(fxmlLoader.load());
+    }
+
+    @FXML
+    private void onArrayButtonClick(ActionEvent event) throws IOException {
+        if (!dataStructuresLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresLoaded = true;
+
+            // Get the controller instance
+            dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        dataStructuresController.onArrayButtonClick(event);
+    }
+
+    @FXML
+    private void onLinkedlistButtonClick(ActionEvent event) throws IOException {
+        if (!dataStructuresLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresLoaded = true;
+
+            // Get the controller instance
+            dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        dataStructuresController.onLinkedListButtonClick(event);
+    }
+
+    @FXML
+    private void onQueueButtonClick(ActionEvent event) throws IOException {
+        if (!dataStructuresLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresLoaded = true;
+
+            // Get the controller instance
+            dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        dataStructuresController.onQueueButtonClick(event);
+    }
+
+    @FXML
+    private void onStackButtonClick(ActionEvent event) throws IOException {
+        if (!dataStructuresLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresLoaded = true;
+
+            // Get the controller instance
+            dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        dataStructuresController.onStackButtonClick(event);
+    }
+
+    @FXML
+    private void onBinarysearchButtonClick(ActionEvent event) throws IOException {
+        if (!algorithmsLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
+            algorithmsRoot = fxmlLoader.load();
+            algorithmsLoaded = true;
+
+            // Get the controller instance
+            algorithmsController = fxmlLoader.getController();
+            algorithmsController.setBorderPane(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        algorithmsController.onBinarySearchClick();
+    }
+
+    @FXML
+    private void onBubblesortButtonClick(ActionEvent event) throws IOException {
+        if (!algorithmsLoaded) {
+            // Load DataStructures.fxml and set its root to dataStructuresRoot
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
+            algorithmsRoot = fxmlLoader.load();
+            algorithmsLoaded = true;
+
+            // Get the controller instance
+            algorithmsController = fxmlLoader.getController();
+            algorithmsController.setBorderPane(borderPane1);
+        }
+
+        // Call the onArrayButtonClick method of the DataStructuresController
+        algorithmsController.onBubbleSortClick(event);
     }
 
 

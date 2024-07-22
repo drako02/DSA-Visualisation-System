@@ -1,5 +1,8 @@
 package com.dsa_visualisation;
 
+import javafx.animation.FillTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.StrokeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -125,6 +128,7 @@ public class StackController implements Initializable {
             stackElements.clear();
         });
 
+        stackVBox.setPadding(new Insets(0 ,0 ,40,0));
         borderPane.setCenter(stackVBox);
         borderPane.setBottom(hbox);
 
@@ -141,6 +145,8 @@ public class StackController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -214,6 +220,7 @@ public class StackController implements Initializable {
                     Ellipse ellipse = new Ellipse(30, 20);
                     ellipse.setFill(Color.TRANSPARENT);
                     ellipse.setStroke(Color.BLACK);
+                    ellipse.setStrokeWidth(2.5);
                     Text text = new Text(String.valueOf(number));
                     text.setFill(Color.BLACK);
 
@@ -262,17 +269,33 @@ public class StackController implements Initializable {
                     Platform.runLater(() -> {
                         // Highlight the top element in green
                         Ellipse ellipse = (Ellipse) topElement.getChildren().get(0);
-                        ellipse.setFill(Color.GREEN);
+
+                        FillTransition fillTransition = new FillTransition(Duration.millis(500), ellipse);
+                        fillTransition.setFromValue(Color.TRANSPARENT);
+                        fillTransition.setToValue(Color.valueOf("#00CC00"));
+//                        fillTransition.setCycleCount(1);
+//                        fillTransition.setAutoReverse(true);
+
+                        StrokeTransition strokeTransition = new StrokeTransition(Duration.millis(500), ellipse, Color.BLACK, Color.GREEN);
+//                        strokeTransition.setAutoReverse(true);
+
+                        ParallelTransition parallelTransition = new ParallelTransition(fillTransition, strokeTransition);
+                        parallelTransition.play();
+
+                        ellipse.setFill(Color.valueOf("#00CC00"));
 
                         // Reset the color back to blue after a delay
-                        new Thread(() -> {
+                        exec.submit(() -> {
                             try {
                                 Thread.sleep(1500); // 1.5 seconds delay
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                            Platform.runLater(() -> ellipse.setFill(Color.TRANSPARENT));
-                        }).start();
+                            Platform.runLater(() -> {
+                                    ellipse.setFill(Color.TRANSPARENT);
+                                    ellipse.setStroke(Color.BLACK);
+                            });
+                        });
                     });
                 }
                 return null;

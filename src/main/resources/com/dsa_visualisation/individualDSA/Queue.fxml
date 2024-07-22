@@ -12,7 +12,7 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="900.0">
                     <children>
-                        <Label text="DATA STRUCTURE/ALGORITHM">
+                        <Label text="QUEUE">
                             <font>
                                 <Font name="Segoe UI Semibold" size="27.0" />
                             </font>

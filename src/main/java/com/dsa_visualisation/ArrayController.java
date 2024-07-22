@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -45,6 +46,8 @@ public class ArrayController implements Initializable {
     private WebView webView;
     private JSONObject codeJson;
     private WebEngine webEngine;
+
+    private Random rng = new Random();
 
     private ExecutorService exec = Executors.newCachedThreadPool(runnable -> {
         Thread t = new Thread(runnable);
@@ -170,6 +173,7 @@ public class ArrayController implements Initializable {
 
         borderPane.setCenter(arrayHBox);
         borderPane.setBottom(vbox);
+        createArray(8, createRandomSeries(), arrayHBox);
 
         loadJson();
 
@@ -183,6 +187,8 @@ public class ArrayController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -332,5 +338,15 @@ public class ArrayController implements Initializable {
                 return null;
             }
         };
+    }
+
+    private List<Integer> createRandomSeries() {
+        List<Integer> elements = new ArrayList<>() {
+        };
+        for (int i = 0; i < 5; i++) {
+            int randomValue = rng.nextInt(50) + 1; // Random value between 1 and 100
+            elements.add(randomValue);
+        }
+        return elements;
     }
 }

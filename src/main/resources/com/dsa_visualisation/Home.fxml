@@ -207,7 +207,7 @@
                         </VBox>
                      </graphic>
                   </Button>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: ffa500; -fx-background-radius: 12;" stylesheets="@styles.css" HBox.hgrow="ALWAYS">
+                  <Button fx:id="algorithmsMainButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: ffa500; -fx-background-radius: 12;" stylesheets="@styles.css" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </HBox.margin>
@@ -219,7 +219,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin>
                               </FontIcon>
-                              <Label text="Algortithms">
+                              <Label text="Algorithms">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="24.0" />
                                  </font>
@@ -247,7 +247,7 @@
                <children>
                   <VBox prefHeight="202.0" prefWidth="300.0">
                      <children>
-                        <Button id="featured" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Stack" VBox.vgrow="ALWAYS">
+                        <Button id="featured" fx:id="stackButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onStackButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Stack" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
@@ -255,7 +255,7 @@
                               <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Linked list" VBox.vgrow="ALWAYS">
+                        <Button fx:id="linkedlistButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinkedlistButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Linked list" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
@@ -263,7 +263,7 @@
                               <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Queue" VBox.vgrow="ALWAYS">
+                        <Button fx:id="queueButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onQueueButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Queue" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
@@ -275,7 +275,7 @@
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="300.0">
                      <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Breadth first search" VBox.vgrow="ALWAYS">
+                        <Button fx:id="binarysearchButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onBinarysearchButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Binary search" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
@@ -283,7 +283,7 @@
                               <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Bubble sort" VBox.vgrow="ALWAYS">
+                        <Button fx:id="bubblesortButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onBubblesortButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Bubble sort" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>
@@ -291,7 +291,7 @@
                               <Font name="Poppins SemiBold" size="18.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Array" VBox.vgrow="ALWAYS">
+                        <Button fx:id="arrayButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onArrayButtonClick" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="button2" stylesheets="@styles.css" text="Array" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="20.0" right="13.0" top="10.0" />
                            </VBox.margin>

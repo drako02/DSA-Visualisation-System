@@ -35,6 +35,7 @@ public class ChatAIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scrollPane.setFitToWidth(true); // Optional: Allow ScrollPane to resize horizontally
+//        scrollPane.setStyle("-fx-background-color: white");
 
 
         chatArea.setSpacing(10);
@@ -48,7 +49,7 @@ public class ChatAIController implements Initializable {
             String question = userInput.getText();
             Label userText = new Label("You: " + question + "\n");
             HBox userTextArea = new HBox();
-            userTextArea.setAlignment(Pos.CENTER_LEFT);
+            userTextArea.setAlignment(Pos.CENTER_RIGHT);
 //            userText.setStyle("-fx-fill: blue; -fx-font-weight: bold;");
             userText.setStyle("-fx-background-color: rgba(232, 213, 167, 0.5);");
             userText.setWrapText(true);
@@ -65,7 +66,7 @@ public class ChatAIController implements Initializable {
             task.setOnSucceeded(e -> {
                 String response = task.getValue();
                 HBox responseTextArea = new HBox();
-                responseTextArea.setAlignment(Pos.CENTER_RIGHT);
+                responseTextArea.setAlignment(Pos.CENTER_LEFT);
                 Label responseText = new Label("OpenAI: " + response + "\n");
                 responseText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
                 responseText.setWrapText(true);
@@ -76,7 +77,7 @@ public class ChatAIController implements Initializable {
 
             task.setOnFailed(e -> {
                 HBox errorTextArea = new HBox();
-                errorTextArea.setAlignment(Pos.CENTER_RIGHT);
+                errorTextArea.setAlignment(Pos.CENTER_LEFT);
                 Label errorText = new Label("Error: " + task.getException().getMessage() + "\n");
 
                 errorText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
