@@ -1,9 +1,7 @@
 package com.dsa_visualisation;
 
-import com.theokanning.openai.completion.chat.ChatCompletionRequest;
-import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.completion.chat.ChatMessageRole;
-import com.theokanning.openai.service.OpenAiService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.net.URI;
 import java.net.URL;
-import java.util.Arrays;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class ChatAIController implements Initializable {
@@ -29,37 +31,30 @@ public class ChatAIController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    OpenAiService openAiService = new OpenAiService("OPENAI_API_KEY"); //Put the actual api key here
-
+    // Replace with your actual FastAPI backend URL
+    private final String API_URL = "http://ec2-13-60-196-157.eu-north-1.compute.amazonaws.com/chat";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scrollPane.setFitToWidth(true); // Optional: Allow ScrollPane to resize horizontally
-//        scrollPane.setStyle("-fx-background-color: white");
-
-
         chatArea.setSpacing(10);
-
-
         userInput.setPromptText("Ask about Data Structures and Algorithms...");
-
-//        chatArea.setEditable(false);
 
         sendButton.setOnAction(event -> {
             String question = userInput.getText();
             Label userText = new Label("You: " + question + "\n");
             HBox userTextArea = new HBox();
             userTextArea.setAlignment(Pos.CENTER_RIGHT);
-//            userText.setStyle("-fx-fill: blue; -fx-font-weight: bold;");
             userText.setStyle("-fx-background-color: rgba(232, 213, 167, 0.5);");
             userText.setWrapText(true);
             userTextArea.getChildren().add(userText);
             chatArea.getChildren().add(userTextArea);
 
+            // Task for handling the backend request
             Task<String> task = new Task<String>() {
                 @Override
                 protected String call() throws Exception {
-                    return getOpenAiResponse(question);
+                    return sendPromptToBackend(question);
                 }
             };
 
@@ -67,7 +62,7 @@ public class ChatAIController implements Initializable {
                 String response = task.getValue();
                 HBox responseTextArea = new HBox();
                 responseTextArea.setAlignment(Pos.CENTER_LEFT);
-                Label responseText = new Label("OpenAI: " + response + "\n");
+                Label responseText = new Label("OpenAI (RAG): " + response + "\n");
                 responseText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
                 responseText.setWrapText(true);
                 responseTextArea.getChildren().add(responseText);
@@ -79,7 +74,6 @@ public class ChatAIController implements Initializable {
                 HBox errorTextArea = new HBox();
                 errorTextArea.setAlignment(Pos.CENTER_LEFT);
                 Label errorText = new Label("Error: " + task.getException().getMessage() + "\n");
-
                 errorText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
                 errorText.setWrapText(true);
                 errorTextArea.getChildren().add(errorText);
@@ -88,24 +82,31 @@ public class ChatAIController implements Initializable {
 
             new Thread(task).start();
         });
-
-
     }
 
-    private String getOpenAiResponse(String question) {
-        try {
-            ChatMessage userMessage = new ChatMessage(ChatMessageRole.USER.value(), question);
-            ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
-                    .model("gpt-3.5-turbo")
-                    .messages(Arrays.asList(userMessage))
-                    .maxTokens(150)
-                    .build();
-            ChatMessage responseMessage = openAiService.createChatCompletion(chatCompletionRequest).getChoices().get(0).getMessage();
-            return responseMessage.getContent();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error: " + e.getMessage();
+    private String sendPromptToBackend(String question) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        ObjectMapper objectMapper = new ObjectMapper(); // Create an instance of ObjectMapper
+
+        // Create JSON payload
+        String requestBody = "{\"query\": \"" + question + "\"}";
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_URL))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            // Parse JSON response using Jackson
+            JsonNode jsonResponse = objectMapper.readTree(response.body());
+            return jsonResponse.get("response").asText();
+        } else {
+            throw new Exception("Error from backend: " + response.statusCode() + " " + response.body());
         }
     }
-}
 
+
+}

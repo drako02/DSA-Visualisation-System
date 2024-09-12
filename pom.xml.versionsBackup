@@ -12,8 +12,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -168,7 +166,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.17.0</version>
+            <version>2.18.0-rc1</version>
         </dependency>
 
         <dependency>
@@ -190,19 +188,19 @@
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.11.0</version>
+            <version>2.9.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>adapter-rxjava2</artifactId>
-            <version>2.11.0</version>
+            <version>2.9.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
-            <version>2.11.0</version>
+            <version>2.9.0</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -231,12 +229,12 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>junit</groupId>-->
-<!--            <artifactId>junit</artifactId>-->
-<!--            <version>3.8.1</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -354,7 +352,24 @@
                 </configuration>
             </plugin>
 
-            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version> <!-- Ensure this version is compatible -->
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Main-Class>com.dsa_visualisation.Main</Main-Class> <!-- Replace with your main class -->
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.17.1</version> <!-- Use the latest version -->
+            </plugin>
 <!--            <plugin>-->
 <!--                <groupId>org.openjfx</groupId>-->
 <!--                <artifactId>javafx-maven-plugin</artifactId>-->

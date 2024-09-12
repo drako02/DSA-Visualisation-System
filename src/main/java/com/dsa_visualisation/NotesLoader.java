@@ -28,7 +28,6 @@ public class NotesLoader {
 
     }
     public Contents getDataStructureNote(String dataStructure) {
-//        return noteNode.path("DataStructures").path(dataStructure).path(part).asText();
 
         Contents content = new Contents(){
             @Override

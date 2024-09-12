@@ -28,6 +28,7 @@ public class HomepageController{
 
     private boolean dataStructuresLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent dataStructuresRoot; // Reference to the loaded DataStructures.fxml root
+
     private DataStructuresController dataStructuresController; // Reference to the DataStructuresController instance
     private AlgorithmsController algorithmsController;
 
@@ -37,6 +38,17 @@ public class HomepageController{
     private boolean notesLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent notesRoot;
 
+
+    private DataStructuresController loadDataStructuresFXML() throws IOException {
+        if (!dataStructuresLoaded) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = fxmlLoader.load();
+            dataStructuresController = fxmlLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+            dataStructuresLoaded = true;  // Set the flag to indicate that the FXML has been loaded
+        }
+        return dataStructuresController;
+    }
 
     @FXML
     private void onDatastructuresButtonClick(ActionEvent event) throws IOException {
@@ -150,6 +162,18 @@ public class HomepageController{
 
     @FXML
     private void initialize(){
+
+        try {
+            // Preload DataStructures.fxml and set its controller
+            FXMLLoader dataStructuresLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
+            dataStructuresRoot = dataStructuresLoader.load();
+            dataStructuresController = dataStructuresLoader.getController();
+            dataStructuresController.setBorderPane1(borderPane1);
+            dataStructuresLoaded = true;
+        } catch (IOException e) {
+            e.printStackTrace();  // Handle the exception if FXML fails to load
+        }
+
         defaultWidth = sidePanel.getPrefWidth();
         initialCenter = borderPane1.getCenter(); // Save the initial center node
 

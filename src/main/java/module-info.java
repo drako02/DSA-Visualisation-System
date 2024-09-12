@@ -1,6 +1,8 @@
 module dsa_visualisation.dsa_visualisation {
     requires transitive javafx.graphics;
-    requires javafx.controls;
+    // requires  javafx.graphics;
+    requires transitive javafx.controls;
+    // requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
     requires javafx.base;
@@ -24,6 +26,7 @@ module dsa_visualisation.dsa_visualisation {
     requires api;
     requires org.json;
     requires org.fxmisc.richtext;
+    requires java.net.http;
 //    requires retrofit2.converter.jackson;
 //    requires com.theokanning.openai_gpt3_java;
 //    requires com.theokanning.openai_gpt3_java.client;
