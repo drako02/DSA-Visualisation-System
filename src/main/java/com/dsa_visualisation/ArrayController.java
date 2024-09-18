@@ -1,6 +1,5 @@
 package com.dsa_visualisation;
 
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -13,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -41,7 +39,6 @@ public class ArrayController implements Initializable {
     private ToggleButton cppButton;
     @FXML
     private ToggleButton jsButton;
-
 
     private WebView webView;
     private JSONObject codeJson;
@@ -193,7 +190,8 @@ public class ArrayController implements Initializable {
 
     private void loadJson() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/Array.json")));
+            String jsonContent = new String(
+                    Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/Array.json")));
             codeJson = new JSONObject(jsonContent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -203,29 +201,32 @@ public class ArrayController implements Initializable {
     private void loadCode(String language, String languageClass) {
         if (codeJson != null) {
             // Retrieve the code snippet for the selected language from the JSONObject
-            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css").toExternalForm();
-            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js").toExternalForm();
+            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css")
+                    .toExternalForm();
+            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js")
+                    .toExternalForm();
             String code = codeJson.getString(language);
             String htmlContent = """
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <link href="%s" rel="stylesheet" />
-                <script src="%s"></script>
-            </head>
-            <body>
-                <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
-                <script>
-                    // JavaScript to set the code content
-                    function setCodeContent(code) {
-                        document.getElementById('codeBlock').textContent = code;
-                        Prism.highlightAll();
-                    }
-                    setCodeContent(`%s`);
-                </script>
-            </body>
-            </html>
-            """.formatted(prismCssPath, prismJsPath, languageClass, code);
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <link href="%s" rel="stylesheet" />
+                        <script src="%s"></script>
+                    </head>
+                    <body>
+                        <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
+                        <script>
+                            // JavaScript to set the code content
+                            function setCodeContent(code) {
+                                document.getElementById('codeBlock').textContent = code;
+                                Prism.highlightAll();
+                            }
+                            setCodeContent(`%s`);
+                        </script>
+                    </body>
+                    </html>
+                    """
+                    .formatted(prismCssPath, prismJsPath, languageClass, code);
 
             // Load the HTML content into the WebView
             webEngine.loadContent(htmlContent);
@@ -237,9 +238,11 @@ public class ArrayController implements Initializable {
         arrayHBox.getChildren().clear();
 
         for (int i = 0; i < size; i++) {
-            /**Rectangle rect = new Rectangle(50, 50);
-            rect.setFill(Color.TRANSPARENT);
-            rect.setStroke(Color.BLACK); **/
+            /**
+             * Rectangle rect = new Rectangle(50, 50);
+             * rect.setFill(Color.TRANSPARENT);
+             * rect.setStroke(Color.BLACK);
+             **/
             HBox hboxRec = new HBox();
             hboxRec.setPrefWidth(50); // Set the preferred width to 200 pixels
             hboxRec.setPrefHeight(50); // Set the preferred height to 100 pixels

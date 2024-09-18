@@ -44,7 +44,6 @@ public class BinarySearchController implements Initializable {
     @FXML
     private ToggleButton jsButton;
 
-
     private WebView webView;
     private JSONObject codeJson;
     private WebEngine webEngine;
@@ -106,7 +105,8 @@ public class BinarySearchController implements Initializable {
             XYChart.Data<String, Number> iterator = new XYChart.Data<>("-1", 0);
             series.getData().add(0, iterator);
             Platform.runLater(() -> {
-                iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+                iterator.getNode()
+                        .setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
             });
         });
 
@@ -114,15 +114,16 @@ public class BinarySearchController implements Initializable {
             inputField.clear();
             searchField.clear();
             chart.getData().clear();
-//            search.setDisable(true);
+            // search.setDisable(true);
             XYChart.Series<String, Number> series1 = createRandomSeries();
             chart.getData().setAll(series1);
-//            search.setDisable(false);
+            // search.setDisable(false);
 
             XYChart.Data<String, Number> iterator1 = new XYChart.Data<>("-1", 0);
             series1.getData().add(0, iterator1);
             Platform.runLater(() -> {
-                iterator1.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+                iterator1.getNode()
+                        .setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
             });
         });
 
@@ -146,7 +147,8 @@ public class BinarySearchController implements Initializable {
         search.setOnAction(e -> {
             String searchText = searchField.getText();
             if (!searchText.isEmpty()) {
-                Task<Void> animateSearchTask = createSearchingTask(chart.getData().get(0), Integer.parseInt(searchText));
+                Task<Void> animateSearchTask = createSearchingTask(chart.getData().get(0),
+                        Integer.parseInt(searchText));
                 buttons.setDisable(true);
                 animateSearchTask.setOnSucceeded(event -> buttons.setDisable(false));
                 exec.submit(animateSearchTask);
@@ -162,7 +164,8 @@ public class BinarySearchController implements Initializable {
         XYChart.Data<String, Number> iterator1 = new XYChart.Data<>("-1", 0);
         series1.getData().add(0, iterator1);
         Platform.runLater(() -> {
-            iterator1.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+            iterator1.getNode()
+                    .setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
         });
 
         loadJson();
@@ -183,7 +186,8 @@ public class BinarySearchController implements Initializable {
 
     private void loadJson() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/BinarySearch.json")));
+            String jsonContent = new String(
+                    Files.readAllBytes(Paths.get("src/main/resources/com/dsa_visualisation/Codes/BinarySearch.json")));
             codeJson = new JSONObject(jsonContent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,29 +197,32 @@ public class BinarySearchController implements Initializable {
     private void loadCode(String language, String languageClass) {
         if (codeJson != null) {
             // Retrieve the code snippet for the selected language from the JSONObject
-            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css").toExternalForm();
-            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js").toExternalForm();
+            String prismCssPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.css")
+                    .toExternalForm();
+            String prismJsPath = getClass().getResource("/com/dsa_visualisation/individualDSA/prism.js")
+                    .toExternalForm();
             String code = codeJson.getString(language);
             String htmlContent = """
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <link href="%s" rel="stylesheet" />
-                <script src="%s"></script>
-            </head>
-            <body>
-                <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
-                <script>
-                    // JavaScript to set the code content
-                    function setCodeContent(code) {
-                        document.getElementById('codeBlock').textContent = code;
-                        Prism.highlightAll();
-                    }
-                    setCodeContent(`%s`);
-                </script>
-            </body>
-            </html>
-            """.formatted(prismCssPath, prismJsPath, languageClass, code);
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <link href="%s" rel="stylesheet" />
+                        <script src="%s"></script>
+                    </head>
+                    <body>
+                        <pre style="font-size: 13px; line-height: 1;"><code class="%s" id="codeBlock" style = 'font-size :13px; '  ></code></pre>
+                        <script>
+                            // JavaScript to set the code content
+                            function setCodeContent(code) {
+                                document.getElementById('codeBlock').textContent = code;
+                                Prism.highlightAll();
+                            }
+                            setCodeContent(`%s`);
+                        </script>
+                    </body>
+                    </html>
+                    """
+                    .formatted(prismCssPath, prismJsPath, languageClass, code);
 
             // Load the HTML content into the WebView
             webEngine.loadContent(htmlContent);
@@ -241,7 +248,7 @@ public class BinarySearchController implements Initializable {
 
                 Platform.runLater(() -> iterator.setYValue(target));
 
-                Thread.sleep((long) (1000 / animationSpeed.get()));;
+                Thread.sleep((long) (1000 / animationSpeed.get()));
 
                 int left = 1;
                 int right = data.size() - 1;
@@ -252,8 +259,10 @@ public class BinarySearchController implements Initializable {
                     Data<String, Number> midData = data.get(mid);
 
                     Platform.runLater(() -> {
-                        double midX = midData.getNode().getParent().localToScene(midData.getNode().getBoundsInParent()).getMinX();
-                        double iteratorX = iterator.getNode().getParent().localToScene(iterator.getNode().getBoundsInParent()).getMinX();
+                        double midX = midData.getNode().getParent().localToScene(midData.getNode().getBoundsInParent())
+                                .getMinX();
+                        double iteratorX = iterator.getNode().getParent()
+                                .localToScene(iterator.getNode().getBoundsInParent()).getMinX();
                         double distance = midX - iteratorX;
 
                         TranslateTransition move = new TranslateTransition(Duration.millis(500), iterator.getNode());
@@ -266,7 +275,8 @@ public class BinarySearchController implements Initializable {
                     if (midData.getYValue().doubleValue() == target) {
                         found = true;
                         Platform.runLater(() -> {
-                            iterator.getNode().setStyle("-fx-border-color: green; -fx-border-width: 4px; -fx-background-color: transparent;");
+                            iterator.getNode().setStyle(
+                                    "-fx-border-color: green; -fx-border-width: 4px; -fx-background-color: transparent;");
                             midData.getNode().setStyle("-fx-background-color: blue;");
                         });
                         break;
@@ -280,14 +290,18 @@ public class BinarySearchController implements Initializable {
                 }
 
                 if (!found) {
-                    Platform.runLater(() -> iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;"));
+                    Platform.runLater(() -> {
+                        showAlert("Element " + target + " not found in the list.");
+                        iterator.getNode().setStyle(
+                                "-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
+                    });
                 }
 
                 Platform.runLater(() -> {
                     iterator.setXValue("-1");
                     iterator.setYValue(0);
-                    iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
-
+                    iterator.getNode().setStyle(
+                            "-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
                 });
 
                 return null;

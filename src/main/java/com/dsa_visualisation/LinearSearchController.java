@@ -171,6 +171,8 @@ public class LinearSearchController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
@@ -225,7 +227,9 @@ public class LinearSearchController implements Initializable {
                 // Update iterator bar height to target value
                 Platform.runLater(() -> iterator.setYValue(target));
 
-                Thread.sleep((long) (1000 / animationSpeed.get()));;
+                Thread.sleep((long) (1000 / animationSpeed.get()));
+
+                boolean found = false;  // Variable to track if the element is found
 
                 for (int i = 1; i < data.size(); i++) {
                     Data<String, Number> current = data.get(i);
@@ -240,15 +244,21 @@ public class LinearSearchController implements Initializable {
                         move.play();
                     });
 
-                    Thread.sleep((long) (750 / animationSpeed.get()));; // Wait for the animation to complete
+                    Thread.sleep((long) (750 / animationSpeed.get()));
 
                     if (current.getYValue().doubleValue() == target) {
-                        Thread.sleep((long) (500 / animationSpeed.get()));;
+                        found = true;  // Mark as found
+                        Thread.sleep((long) (500 / animationSpeed.get()));
                         Platform.runLater(() -> iterator.getNode().setStyle("-fx-border-color: green; -fx-border-width: 4px; -fx-background-color: transparent;"));
-                        Thread.sleep((long) (500 / animationSpeed.get()));;
+                        Thread.sleep((long) (500 / animationSpeed.get()));
                         Platform.runLater(() -> current.getNode().setStyle("-fx-background-color: blue;"));
                         break;
                     }
+                }
+
+                if (!found) {
+                    // Show alert if the element is not found
+                    Platform.runLater(() -> showAlert("Element not found in the list"));
                 }
 
                 Platform.runLater(() -> {
@@ -256,10 +266,20 @@ public class LinearSearchController implements Initializable {
                     iterator.setYValue(0);
                     iterator.getNode().setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-color: transparent;");
                 });
+
                 return null;
             }
         };
     }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     private XYChart.Series<String, Number> createSeriesFromInput(String input) {
         List<Integer> numbers = Arrays.stream(input.split(","))

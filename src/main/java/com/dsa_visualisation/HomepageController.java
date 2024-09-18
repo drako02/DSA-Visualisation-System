@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomepageController{
+public class HomepageController {
     @FXML
     private Stage stage;
     @FXML
@@ -24,7 +24,6 @@ public class HomepageController{
     private BorderPane borderPane1;
 
     private Node initialCenter;
-
 
     private boolean dataStructuresLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent dataStructuresRoot; // Reference to the loaded DataStructures.fxml root
@@ -38,14 +37,13 @@ public class HomepageController{
     private boolean notesLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent notesRoot;
 
-
     private DataStructuresController loadDataStructuresFXML() throws IOException {
         if (!dataStructuresLoaded) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataStructures.fxml"));
             dataStructuresRoot = fxmlLoader.load();
             dataStructuresController = fxmlLoader.getController();
             dataStructuresController.setBorderPane1(borderPane1);
-            dataStructuresLoaded = true;  // Set the flag to indicate that the FXML has been loaded
+            dataStructuresLoaded = true; // Set the flag to indicate that the FXML has been loaded
         }
         return dataStructuresController;
     }
@@ -66,8 +64,6 @@ public class HomepageController{
         borderPane1.setCenter(dataStructuresRoot);
     }
 
-
-
     @FXML
     private boolean algorithmsLoaded = false; // Flag to track if DataStructures.fxml is loaded
     private Parent algorithmsRoot; // Reference to the loaded DataStructures.fxml root
@@ -84,11 +80,9 @@ public class HomepageController{
             algorithmsController.setBorderPane(borderPane1);
         }
 
-
         // Set the root of DataStructures.fxml to the center of the BorderPane
         borderPane1.setCenter(algorithmsRoot);
     }
-
 
     @FXML
     private void onNotesButtonClick(ActionEvent event) throws IOException {
@@ -106,13 +100,11 @@ public class HomepageController{
         borderPane1.setCenter(notesRoot);
     }
 
-
-//    @FXML
-//    private void onNotesButtonClick(ActionEvent event) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
-//        borderPane.setCenter(fxmlLoader.load());
-//    }
-
+    // @FXML
+    // private void onNotesButtonClick(ActionEvent event) throws IOException {
+    // FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Notes.fxml"));
+    // borderPane.setCenter(fxmlLoader.load());
+    // }
 
     @FXML
     private void onChataiButtonClick(ActionEvent event) throws IOException {
@@ -122,14 +114,14 @@ public class HomepageController{
             chatAIRoot = fxmlLoader.load();
             chatAILoaded = true;
 
-//            DataStructuresController dataStructuresController = fxmlLoader.getController();
-//            dataStructuresController.setBorderPane1(borderPane);
+            // DataStructuresController dataStructuresController =
+            // fxmlLoader.getController();
+            // dataStructuresController.setBorderPane1(borderPane);
         }
 
         // Set the root of DataStructures.fxml to the center of the BorderPane
         borderPane1.setCenter(chatAIRoot);
     }
-
 
     @FXML
     private void onAboutButtonClick(ActionEvent event) throws IOException {
@@ -153,15 +145,13 @@ public class HomepageController{
     @FXML
     private Button sideButton6;
 
-
     private double defaultWidth;
 
     @FXML
     private Button algorithmsMainButton;
 
-
     @FXML
-    private void initialize(){
+    private void initialize() {
 
         try {
             // Preload DataStructures.fxml and set its controller
@@ -171,7 +161,7 @@ public class HomepageController{
             dataStructuresController.setBorderPane1(borderPane1);
             dataStructuresLoaded = true;
         } catch (IOException e) {
-            e.printStackTrace();  // Handle the exception if FXML fails to load
+            e.printStackTrace(); // Handle the exception if FXML fails to load
         }
 
         defaultWidth = sidePanel.getPrefWidth();
@@ -194,7 +184,7 @@ public class HomepageController{
     @FXML
     private void resizeSidePanel(ActionEvent event) {
 
-        if(sidePanel.getPrefWidth() == defaultWidth){
+        if (sidePanel.getPrefWidth() == defaultWidth) {
             sidePanel.setPrefWidth(45);
             sideButton1.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             sideButton2.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
@@ -202,7 +192,6 @@ public class HomepageController{
             sideButton4.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             sideButton5.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             sideButton6.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-
 
         } else {
             sidePanel.setPrefWidth(defaultWidth);
@@ -213,11 +202,12 @@ public class HomepageController{
             sideButton5.setContentDisplay(ContentDisplay.LEFT);
             sideButton6.setContentDisplay(ContentDisplay.LEFT);
 
-
         }
     }
+
     @FXML
     private Button bubbleSort;
+
     private void onBubbleSortClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
         borderPane1.setCenter(fxmlLoader.load());
@@ -309,7 +299,7 @@ public class HomepageController{
     }
 
     @FXML
-    private void onBubblesortButtonClick(ActionEvent event) throws IOException {
+    private void onBubblesortButtonClick() throws IOException {
         if (!algorithmsLoaded) {
             // Load DataStructures.fxml and set its root to dataStructuresRoot
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Algorithms.fxml"));
@@ -322,9 +312,7 @@ public class HomepageController{
         }
 
         // Call the onArrayButtonClick method of the DataStructuresController
-        algorithmsController.onBubbleSortClick(event);
+        algorithmsController.onBubbleSortClick();
     }
 
-
 }
-

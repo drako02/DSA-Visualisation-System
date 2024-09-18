@@ -17,7 +17,7 @@ public class AlgorithmsController {
     }
 
 
-    public void onBubbleSortClick(ActionEvent event) throws IOException {
+    public void onBubbleSortClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("individualDSA/BubbleSort.fxml"));
         Parent parent = fxmlLoader.load();
         borderPane.setCenter(parent);
