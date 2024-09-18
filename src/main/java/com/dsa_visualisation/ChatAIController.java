@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -136,7 +137,8 @@ public class ChatAIController implements Initializable {
                     if (newVal.doubleValue() <= 50) {
                         systemIcon.setAlignment(Pos.CENTER_LEFT);
                     } else {
-                        system_Icon.setAlignment(Pos.TOP_LEFT);
+                        systemIcon.setAlignment(Pos.TOP_LEFT);
+                        systemIcon.setPadding(new Insets(16,0 ,0 ,0));
                     }
                 });
             });
