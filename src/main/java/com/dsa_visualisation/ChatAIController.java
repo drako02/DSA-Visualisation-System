@@ -8,8 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -101,6 +103,9 @@ public class ChatAIController implements Initializable {
                 }
             });
 
+            userInput.clear();
+
+
             // Task for handling the backend request
             Task<String> task = new Task<String>() {
                 @Override
@@ -116,7 +121,7 @@ public class ChatAIController implements Initializable {
 
                 VBox systemIcon = new VBox();
                 systemIcon.setAlignment(Pos.CENTER_LEFT);
-//                systemIcon.setAlignment(Pos.TOP_LEFT);
+                // systemIcon.setAlignment(Pos.TOP_LEFT);
 
                 Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/dsa_visualisation/icons/systemIcon.png")));
                 ImageView sysIcon = new ImageView(image2);
@@ -131,7 +136,7 @@ public class ChatAIController implements Initializable {
                 responseText.setWrapText(true);
                 responseTextArea.getChildren().addAll(systemIcon, responseText);
                 chatArea.getChildren().add(responseTextArea);
-                userInput.clear();
+                // userInput.clear();
 
                 responseTextArea.heightProperty().addListener((obs, oldVal, newVal) -> {
                     if (newVal.doubleValue() <= 50) {
@@ -144,17 +149,32 @@ public class ChatAIController implements Initializable {
             });
 
             task.setOnFailed(e -> {
-                HBox errorTextArea = new HBox();
-                errorTextArea.setAlignment(Pos.CENTER_LEFT);
-                Label errorText = new Label("Error: " + task.getException().getMessage() + "\n");
-                errorText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
-                errorText.setWrapText(true);
-                errorTextArea.getChildren().add(errorText);
-                chatArea.getChildren().add(errorTextArea);
+                Alert errAlert = new Alert(AlertType.ERROR);
+                errAlert.setTitle("Error");
+                errAlert.setHeaderText(null);
+                errAlert.setContentText("Failed to process input");
+                errAlert.showAndWait();
+                userInput.clear();
+                // HBox errorTextArea = new HBox();
+                // errorTextArea.setAlignment(Pos.CENTER_LEFT);
+                // Label errorText = new Label("Error: " + task.getException().getMessage() + "\n");
+                // errorText.setStyle("-fx-background-color: rgba(155, 142, 111, 0.5);");
+                // errorText.setWrapText(true);
+                // errorTextArea.getChildren().add(errorText);
+                // chatArea.getChildren().add(errorTextArea);
             });
 
             new Thread(task).start();
         });
+
+        userInput.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                sendButton.fire();
+            }
+
+        });
+
+        // sendButton.requestFocus();
     }
 
     private String sendPromptToBackend(String question) throws Exception {

@@ -155,6 +155,8 @@ public class LinkedListController implements Initializable {
         javaButton.setOnAction(event -> loadCode("java", "language-java"));
         cppButton.setOnAction(event -> loadCode("cpp", "language-cpp"));
         jsButton.setOnAction(event -> loadCode("javascript", "language-js"));
+
+        javaButton.fire();
     }
 
     private void loadJson() {
