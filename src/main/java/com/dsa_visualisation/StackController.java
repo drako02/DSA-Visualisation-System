@@ -81,18 +81,28 @@ public class StackController implements Initializable {
         Button popButton = new Button("Pop");
         Button peekButton = new Button("Peek");
         Button resetButton = new Button("Reset");
+        Button sizeButton = new Button("Size"); // Create a size button
 
         HBox inputBox = new HBox(5, inputField, pushButton);
         inputBox.setAlignment(Pos.CENTER);
         inputBox.setPadding(new Insets(5));
 
-        HBox buttons = new HBox(5, popButton, peekButton, resetButton);
+        HBox buttons = new HBox(5, popButton, peekButton, resetButton, sizeButton); // Add the size button to the HBox
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
         HBox hbox = new HBox(20, inputBox, buttons);
         hbox.setAlignment(Pos.CENTER);
         hbox.setPadding(new Insets(10));
+
+        sizeButton.setOnAction(e -> {
+        int stackSize = stackElements.size();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Stack Size");
+        alert.setHeaderText(null);
+        alert.setContentText("The size of the stack is: " + stackSize);
+        alert.showAndWait();
+        });
 
         pushButton.setOnAction(e -> {
             String inputText = inputField.getText();
