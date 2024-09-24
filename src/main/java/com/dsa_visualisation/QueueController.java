@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -74,18 +75,28 @@ public class QueueController implements Initializable {
         Button enqueueButton = new Button("Enqueue");
         Button dequeueButton = new Button("Dequeue");
         Button resetButton = new Button("Reset");
+        Button sizeButton = new Button("Size"); // Create a size button
 
         HBox inputBox = new HBox(5, inputField, enqueueButton);
         inputBox.setAlignment(Pos.CENTER);
         inputBox.setPadding(new Insets(5));
 
-        HBox buttons = new HBox(5, dequeueButton, resetButton);
+        HBox buttons = new HBox(5, dequeueButton, resetButton, sizeButton);
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(new Insets(5));
 
         HBox hbox = new HBox(20, inputBox, buttons);
         hbox.setAlignment(Pos.CENTER);
         hbox.setPadding(new Insets(10));
+
+        sizeButton.setOnAction(e -> {
+            int queueSize = queueElements.size();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Queue Size");
+            alert.setHeaderText(null);
+            alert.setContentText("The size of the queue is: " + queueSize);
+            alert.showAndWait();
+        });
 
         enqueueButton.setOnAction(e -> {
             String inputText = inputField.getText();
